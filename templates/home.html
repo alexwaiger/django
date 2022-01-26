@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}Best Оnlinе Саsinоs in {% now "F Y" %}{% endblock %}
+{% block content %}
+	{% for casino in casino_list %}				
+		<div class="games_container col-lg-10 col-md-11 col-sm-12 col-12">
+
+			<div class="game-card">
+
+				<div class="game-card__section game-card__section-img">
+					<div class="game-card__img {% if forloop.counter == 1 %}game-card__img-gold-crown{% elif forloop.counter == 2 %}game-card__img-silver-crown{% elif forloop.counter == 3 %}game-card__img-bronze-crown{% endif %}">
+						<a style="background: {{ casino.color }};" href="{% if gambler_id != 0 %}{{ casino.link_en|build 'gambler_id' }}{% else %}{{ casino.link_en }}{% endif %}"><img src="{{ casino.logo|thumbnail_url:'site_logo' }}" alt="{{ casino.name }}" /></a>
+					</div>
+					<div class="game-card__block-star">
+						<img class="game-card__star" src="/media/img/star.svg" alt="img">
+						<img class="game-card__star" src="/media/img/star.svg" alt="img">
+						<img class="game-card__star" src="/media/img/star.svg" alt="img">
+						<img class="game-card__star" src="/media/img/star.svg" alt="img">
+						<img class="game-card__star" src="/media/img/star.svg" alt="img">
+					</div>
+				</div>
+
+				<div class="game-card__section game-card__section--d-flex">
+					<div class="game-card__block game-card__block--border-right">
+						<div class="game-card__title-block game-card__title-block-468  game-card__title-block--first">
+							<p class="game-card__title">
+								BONUS
+							</p>
+						</div>
+						<a href="{{ casino.link_en }}{% if gambler_id != 0 %}anid={{ gambler_id }}&payload={{ gambler_id }}&clickid={{ gambler_id }}&s2s.req_id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+						<img class="game-card__icon" src="/media/img/gift.svg" alt="gift" />
+						</a>
+						<a href="{{ casino.link_en }}{% if gambler_id != 0 %}anid={{ gambler_id }}&payload={{ gambler_id }}&clickid={{ gambler_id }}&s2s.req_id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+						<h1 class="game-card__green-text">
+							{{ casino.limit }} {{ country.currency }}
+						</h1>
+						</a>
+					</div>
+					<div class="game-card__block">
+						<div class="game-card__title-block game-card__title-block-468 game-card__title-block--768">
+							<p class="game-card__title">
+								FREE SPIN
+							</p>
+						</div>
+						<a href="{{ casino.link_en }}{% if gambler_id != 0 %}anid={{ gambler_id }}&payload={{ gambler_id }}&clickid={{ gambler_id }}&s2s.req_id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+						<img class="game-card__icon" src="/media/img/repeat.svg" alt="repeat" />
+						</a>
+						<a href="{{ casino.link_en }}{% if gambler_id != 0 %}anid={{ gambler_id }}&payload={{ gambler_id }}&clickid={{ gambler_id }}&s2s.req_id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+						<h1 class="game-card__green-text">
+							{{ casino.fs }} FS
+						</h1>
+						</a>
+					</div>
+				</div>
+
+				<div class="game-card__section">
+					<div class="game-card__block game-card__block-with-list">
+						<div class="game-card__title-block  game-card__title-block-768">
+							<p class="game-card__title ">
+								INFO
+							</p>
+						</div>
+						<ul class="game-card__list game-card__list--dnone">
+							{% if casino.adv1_en %}<li>{{ casino.adv1_en }}</li>{% endif %}
+							{% if casino.adv2_en %}<li>{{ casino.adv2_en }}</li>{% endif %}
+							{% if casino.adv3_en %}<li>{{ casino.adv3_en }}</li>{% endif %}
+						</ul>
+						<div class="game-card__subtitle-block">
+							<p class="game-card__subtitle game-card__subtitle--first">
+								Min deposit <span>{{ country.currency }}{{ casino.min_dep }}</span>
+							</p>
+							<p class="game-card__subtitle">
+								License
+							</p>
+							<img src="/media/img/license/{{ casino.license }}.png" width="24px"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="game-card__section">
+					<div class="game-card__block game-card__block-with-list">
+						<div class="game-card__title-block game-card__title-block-768 game-card__title-block--last">
+							<p class="game-card__title">
+								PAYMENT SYSTEM
+							</p>
+						</div>
+						<div class="game-card__block-banks game-card__block-468">
+							<div class="mspa">
+								{% for pay in casino.pay_en.all %}
+									{% if forloop.counter <= 9 %}
+									<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+									{% endif %}
+								{% endfor %}
+							</div>
+
+							<ul class="game-card__list game-card__list--respons hidden">
+									{% if casino.adv1_en %}<li>{{ casino.adv1_en }}</li>{% endif %}
+									{% if casino.adv2_en %}<li>{{ casino.adv2_en }}</li>{% endif %}
+									{% if casino.adv3_en %}<li>{{ casino.adv3_en }}</li>{% endif %}
+							</ul>
+							<div class="game-card__arrow-bottom" onclick="hideShow()">
+								<img src="/media/img/arrow.svg" alt="img" class="game-card__arrow-img">
+							</div>
+
+						</div>
+						<div class="game-card__block-button game-card__block-button--468">
+							<a class="game-card__button" href="{{ casino.link_en }}{% if gambler_id != 0 %}anid={{ gambler_id }}&payload={{ gambler_id }}&clickid={{ gambler_id }}&s2s.req_id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+								PLAY NOW
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>	
+	{% endfor %}							
+{% endblock %}

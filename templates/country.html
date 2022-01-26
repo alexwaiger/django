@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load easy_thumbnails_tags %}
+{% load linkbuilder %}
+{% block lang %}pl{% endblock %}
+{% block title %}Best Оnlinе Саsinоs in {% now "F Y" %}{% endblock %}
+
+{% block style %}
+body {
+		background: {{ country.theme.bg_color }} url('{{ country.theme.bg_img.bg_desc.url }}') top center fixed !important;
+}
+@media only screen and (max-width : 480px) {
+	body {
+		background: {{ country.theme.bg_color }} url('{% if country.theme.bg_mob_img %}{{ country.theme.bg_mob_img.bg_mob.url }}{% else %}{{ country.theme.bg_img.bg_mob.url }}{% endif %}') top center fixed !important;
+	}
+}
+@media only screen and (min-width : 480px) and (max-width : 992px) {
+	body {
+		background: {{ country.theme.bg_color }} url('{% if country.theme.bg_tab_img %}{{ country.theme.bg_tab_img.bg_tab.url }}{% else %}{{ country.theme.bg_img.bg_tab.url }}{% endif %}') top center fixed !important;
+	}
+}
+header {
+	background: {{ country.theme.h_color }}d6;
+	border-bottom: 1px solid {{ country.theme.color }}80;
+}
+.block-wrapper {
+	border: 1px solid {{ country.theme.color }}80;
+	background: {{ country.theme.bg_color }}c4;
+	box-shadow: 0 0 5px {{ country.theme.color }}4d;
+}
+.title {
+	color: {{ country.theme.color }};
+}
+.light {
+	text-shadow: 1px 1px 5px {{ country.theme.color }}3d, -1px -1px 5px {{ country.theme.color }}3d, 1px -1px 5px {{ country.theme.color }}3d, -1px 1px 5px {{ country.theme.color }}3d;
+}
+.light-box {
+	box-shadow: 1px 1px 5px {{ country.theme.color }}3d, -1px -1px 5px {{ country.theme.color }}3d, 1px -1px 5px {{ country.theme.color }}3d, -1px 1px 5px {{ country.theme.color }}3d;
+}
+.icons .data .mindep {
+	color: {{ country.theme.color }};
+}
+.icons .data .license {
+	color: {{ country.theme.color }};
+}
+.play-button {
+	border: 1px solid {{ country.theme.color }};
+	color: {{ country.theme.color }} !important;
+}
+.play-button:hover {
+	border: 1px solid {{ country.theme.color }} !important;
+	text-shadow: 1px 1px 7px {{ country.theme.color }}3d, -1px -1px 7px {{ country.theme.color }}3d, 1px -1px 7px {{ country.theme.color }}3d, -1px 1px 7px {{ country.theme.color }}3d;
+	box-shadow: 1px 1px 7px {{ country.theme.color }}3d, -1px -1px 7px {{ country.theme.color }}3d, 1px -1px 7px {{ country.theme.color }}3d, -1px 1px 7px {{ country.theme.color }}3d;
+}
+.bottom-block {
+	background: {{ country.theme.h_color }}d6;
+	border-top: 1px solid {{ country.theme.color }}80;
+}
+{% if country.theme.icons_color %}
+.p-logos img {
+    filter: grayscale(100%);
+}
+.p-logos img:hover {
+    filter: grayscale(0%);
+}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+	{% for casino in casino_list %}
+		<div class="block-wrapper light-box {% if forloop.counter == 1 %}gold-crown{% elif forloop.counter == 2 %}silver-crown{% elif forloop.counter == 3 %}bronze-crown{% endif %}">
+			{% if casino.badge %}
+			<div class="badge-wrapper">
+				<img class="badge-bg" src="/media/img/badges/lazy/{{ casino.badge.color }}" data-src="/media/img/badges/{{ casino.badge.color }}" alt="badge" />
+				<span class="badge-text">{{ casino.badge.text }}</span>
+			</div>
+			{% endif %}
+			<div class="container block-padding">
+				<div class="row">
+					<div class="block-logo col-4 col-lg-3">
+						<div class="container gx-1">
+							<div class="row gx-1">
+								<div class="logo col-12 col-lg-12">
+									<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+										<img src="{{ casino.logo.lazy_logo.url }}" data-src="{{ casino.logo.site_logo.url }}" alt="{{ casino.name }}" />
+									</a>
+								</div>
+								<div class="col-12 col-lg-12">
+									<div class="row">
+										<div class="stars col-12 col-lg-12">
+											<img class="star" src="/media/img/stars/star-{{ casino.trust_score }}.png" data-src="/media/img/stars/star-{{ casino.trust_score }}.png" alt="rating">
+											<div class="rating-text light">Score - {{ casino.get_trust_score_display }}/5 ({{ casino.votes }} Votes)</div>
+										</div>
+										<div class="icons col-12 col-lg-12">
+											<div class="data row">
+												<div class="license light col-6">
+													<div>{% block license %}License{% endblock %}</div>
+													<span><img src="/media/img/license/{{ casino.license }}.png" data-src="/media/img/license/{{ casino.license }}.png" /></span>
+												</div>											
+												<div class="mindep light col-6">
+													<div>{% block mindep %}Min Dep{% endblock %}</div><span>{{ casino.min_dep }}{{ country.currency.symbol }}</span>
+												</div>								
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!--Row-->
+						</div><!--Container-->
+					</div><!--block-logo-->
+					<div class="block-body col-8 col-lg-9">
+						<div class="row">
+							<div class="col-12 col-lg-4">
+								<div class="row">
+								{% if casino.limit == 0 and casino.fs == 0 %}
+									<div class="cashback light col-12">
+										<div class="title">
+											{% block cashback %}CASHBACK{% endblock %}
+										</div>
+										<div class="data">
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<img class="game-block__icon " src="/media/img/cashback.png" data-src="/media/img/cashback.png" alt="cashback" />
+											</a>
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<h3>
+													{% if casino.cashback %}{{ casino.cashback }}{% else %}10{% endif %}%
+												</h3>
+											</a>
+										</div>
+									</div>								
+								{% else %}
+									{% if casino.limit != 0 %}
+									<div class="promo light col-6">
+										<div class="title">
+											{% block bonus %}BONUS{% endblock %}
+										</div>
+										<div class="data">
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<img class="game-block__icon " src="/media/img/gift.png" data-src="/media/img/gift.png" alt="gift" />
+											</a>
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<h3>
+													{{ country.currency.symbol }} {{ casino.bonus_limit }}
+												</h3>
+											</a>
+										</div>
+									</div>
+									{% else %}
+									<div class="cashback light col-6">
+										<div class="title">
+											{% block cashback2 %}CASHBACK{% endblock %}
+										</div>
+										<div class="data">
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<img class="game-block__icon " src="/media/img/cashback.png" data-src="/media/img/cashback.png" alt="cashback" />
+											</a>
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<h3>
+													{% if casino.cashback %}{{ casino.cashback }}{% else %}10{% endif %}%
+												</h3>
+											</a>
+										</div>
+									</div>										
+									{% endif %}
+									{% if casino.fs != 0 %}
+									<div class="fs light col-6">
+										<div class="title">
+											{% block fs %}FREE SPIN{% endblock %}
+										</div>
+										<div class="data">
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<img src="/media/img/repeat.png" data-src="/media/img/repeat.png" alt="gift" />
+											</a>
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<h3>
+													{{ casino.fs }} FS
+												</h3>
+											</a>
+										</div>
+									</div>
+									{% else %}
+									<div class="cashback light col-6">
+										<div class="title">
+											{% block cashback3 %}CASHBACK{% endblock %}
+										</div>
+										<div class="data">
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<img class="game-block__icon " src="/media/img/cashback.png" data-src="/media/img/cashback.png" alt="cashback" />
+											</a>
+											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												<h3>
+													{% if casino.cashback %}{{ casino.cashback }}{% else %}10{% endif %}%
+												</h3>
+											</a>
+										</div>
+									</div>										
+									{% endif %}
+								{% endif %}
+								</div><!--Row-->
+							</div>
+							<div class="col-12 col-lg-8">
+								<div class="row">
+									<div class="block-info light col-lg-12">
+										<div class="title">
+											{% block info %}INFO{% endblock %}
+										</div>
+										<div class="data">
+											<ul class="texts">
+											{% block adv %}
+												{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+												{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+												{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
+											{% endblock %}
+											</ul>
+										</div>
+									</div>
+									<div class="p-logos col-12">
+										<div class="title light">
+											{% block pay %}PAYMENT SYSTEMS{% endblock %}
+										</div>
+										<div class="data">
+											{% block payments %}
+												<ul class="anime">
+													{% for pay in casino.pay.all %}
+															<li>
+																<a class="anime" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+																	<img class="bank-img" src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+																</a>
+															</li>
+													{% endfor %}
+												</ul>
+											{% endblock %}
+										</div>
+									</div>
+									<div class="buttons col-12">
+											<a class="play-button light-box light" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+												{% block play %}CLAIM BONUS{% endblock %}
+											</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--block-info-->
+				</div><!--ROW-->
+			</div><!--block-WRAPPER-->
+		</div><!--CONTAINER-->
+	{% endfor %}							
+{% endblock %}
+
+{% block copy %}All Rights Reserved{% endblock %}

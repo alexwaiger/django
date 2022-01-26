@@ -1,0 +1,119 @@
+*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*::-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-ms-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+/* .p-logos img:hover {
+	-webkit-filter: grayscale(0%);
+	-moz-filter: grayscale(0%);
+	-ms-filter: grayscale(0%);
+	-o-filter: grayscale(0%);
+	filter: grayscale(0%);
+} */
+
+.promo .data a:hover {
+	color: #fff000 !important;
+}
+.fs .data a:hover {
+	color: #fff000 !important;
+}
+.providers {
+	padding: 0;
+	margin: 0;
+	max-width: 100%;
+}
+.providers .soft {
+	padding: 0;
+	width: 100%;
+}
+.providers ul {
+	display: block;
+	padding: 0;
+	text-align: center;
+}
+.providers ul li {
+	display: inline-block;
+	margin: 5px 10px;
+}
+.providers ul li img {
+	width: 50px;
+}
+.p-logos:before {
+	content: "";
+	position: absolute;
+	width: 18px;
+	height: 36px;
+	top: 24px;
+	left: 0px;
+	background-image: url(/media/img/left-arrow.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+.p-logos:after {
+	content: "";
+	position: absolute;
+	width: 18px;
+	height: 36px;
+	top: 24px;
+	right: 0px;
+	background-image: url(/media/img/right-arrow.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+.data ul.anime {
+	padding-left: 0 !important;
+	-webkit-animation: shake 5s linear alternate infinite;
+	animation: shake 5s linear alternate infinite;
+}
+ul.anime:hover {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+@-webkit-keyframes shake {
+	0% {
+		-webkit-transform: translateX(-180px);
+	}	
+	100% {
+		-webkit-transform: translateX(0px);
+	}
+}
+@keyframes shake {
+	0% {
+		-webkit-transform: translateX(-180px);
+	}	
+	100% {
+		transform: translateX(0px);
+	}
+}
+#toTop {
+	display: none;
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 33px;
+	right: 33px;
+}
+#toTop img {
+	max-width: 100%;
+	cursor: pointer;
+}

@@ -1,0 +1,50 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block title %}Best Оnlinе Саsinоs in Australia{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}FREE SPIN{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+	{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+	{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min deposit{% endblock %}
+
+{% block license %}License{% endblock %}
+
+{% block pay %}PAYMENT SYSTEMS{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+	{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+	{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	<ul class="anime">
+		{% for pay in casino.pay.all %}
+				<li>
+					<a class="anime" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+						<img class="game-card__bank-img lazyload" src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+					</a>
+				</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
+{% block play %}PLAY NOW{% endblock %}
+
+{% block copy %}All Rights Reserved{% endblock %}
