@@ -10,15 +10,6 @@ class CasinoAdmin(admin.ModelAdmin):
     filter_horizontal = ('country', 'pay')
     search_fields = ('name',)
     ordering = ('-is_active', 'position')
-    fieldsets = (
-        (None, {
-            'fields': (('is_active', 'name', 'partner'), ('trust_score', 'votes', 'license', 'badge'), 'logo', 'country', ('min_dep', 'bonus', 'limit', 'fs'))
-        }),
-        ('Australian Top', {
-            'classes': ('collapse',),
-            'fields': ('pay', ('position', 'link'), ('adv1', 'adv2', 'adv3'))
-        })
-    )
     list_filter = (      
         ('is_active'),
         ('country', RelatedDropdownFilter),
