@@ -47,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 ]
 
-ROOT_URLCONF = 'top10casino-au-com.urls'
+ROOT_URLCONF = 'main.urls'
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'top10casino-au-com.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 
 # Database
