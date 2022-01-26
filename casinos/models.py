@@ -87,12 +87,12 @@ class Casino(models.Model):
     logo = ThumbnailerImageField(u'Casino Logo', upload_to="upload/img/logos/")
     country = models.ManyToManyField(Countries, default=None, related_name='countries', blank=True)
     
-    pay = models.ManyToManyField(Payment, related_name='pays_au', blank=True)
-    position = models.IntegerField(u'Position AU', default=0, blank=False, null=False)
-    link = models.CharField(u'Link AU', max_length=180, help_text=u"Если в ссылке уже есть знак ? то она должна оканчиваться на знак &, если нет, то на знак ?", blank=True, null=True)
-    adv1 = models.CharField(u'Promo1 AU', max_length=50, blank=True, null=True)
-    adv2 = models.CharField(u'Promo2 AU', max_length=50, blank=True, null=True)
-    adv3 = models.CharField(u'Promo3 AU', max_length=50, blank=True, null=True)
+    pay = models.ManyToManyField(Payment, related_name='pays', blank=True)
+    position = models.IntegerField(u'Position', default=0, blank=False, null=False)
+    link = models.CharField(u'Link', max_length=180, help_text=u"Если в ссылке уже есть знак ? то она должна оканчиваться на знак &, если нет, то на знак ?", blank=True, null=True)
+    adv1 = models.CharField(u'Promo1', max_length=50, blank=True, null=True)
+    adv2 = models.CharField(u'Promo2', max_length=50, blank=True, null=True)
+    adv3 = models.CharField(u'Promo3', max_length=50, blank=True, null=True)
     
     min_dep = models.IntegerField(u'Min deposit', blank=False, null=False, default=0)
     bonus = models.IntegerField(u'Welcome bonus', blank=False, null=False, default=0)
