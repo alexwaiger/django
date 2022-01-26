@@ -1,16 +1,6 @@
 {% extends "country.html" %}
 {% load linkbuilder %}
 
-{% block link %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link0 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link1 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link1-1 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link2 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link3 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link4 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link5 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-{% block link6 %}{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}{% endblock %}
-
 {% block title %}I migliori Casinò Online in Italia{% endblock %}
 
 {% block welcome %}Welcome Bonus{% endblock %}
@@ -21,36 +11,26 @@
 
 {% block bonus %}BONUS{% endblock %}
 
-{% block fs %}GRATIS ROTAZIONE{% endblock %}
+{% block fs %}FREE SPIN{% endblock %}
 
 {% block info %}INFORMAZIONE{% endblock %}
 
 {% block adv %}
-	{% if casino.adv1_it %}<li>{{ casino.adv1_it }}</li>{% endif %}
-	{% if casino.adv2_it %}<li>{{ casino.adv2_it }}</li>{% endif %}
-	{% if casino.adv3_it %}<li>{{ casino.adv3_it }}</li>{% endif %}
+	{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+	{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+	{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
 {% endblock %}
 
-{% block mindep %}Deposito minimo{% endblock %}
+{% block mindep %}Dep min{% endblock %}
 
 {% block license %}Licenza{% endblock %}
 
 {% block pay %}SISTEMA DI PAGAMENTO{% endblock %}
 
 {% block adv2 %}
-	{% if casino.adv1_it %}<li>{{ casino.adv1_it }}</li>{% endif %}
-	{% if casino.adv2_it %}<li>{{ casino.adv2_it }}</li>{% endif %}
-	{% if casino.adv3_it %}<li>{{ casino.adv3_it }}</li>{% endif %}
-{% endblock %}
-
-{% block payments %}
-	{% for pay in casino.pay_it.all %}
-		{% if forloop.counter <= 9 %}
-		<a href="{% if gambler_id != 0 and casino.link_it %}{{ casino.link_it | build:gambler_id }}{% else %}{{ casino.link_it }}{% endif %}" target="_blank">
-			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
-		</a>
-		{% endif %}
-	{% endfor %}
+	{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+	{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+	{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
 {% endblock %}
 
 {% block play %}GIOCA ORA{% endblock %}

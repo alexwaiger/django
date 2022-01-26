@@ -29,6 +29,7 @@ CHOICES = (
 LICENSES = (
     ('1', 'Curacao'),
     ('2', 'Malta'),
+    ('3', 'AAMS'),
 )
 
 COLORS = (
