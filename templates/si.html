@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}{% endblock %}
+
+{% block title %}Najboljše spletne igralnice v Sloveniji{% endblock %}
+
+{% block welcome %}Dobrodošel Bonus{% endblock %}
+
+{% block button %}Dobi brezplačen{% endblock %}
+
+{% block button1 %}Dobi brezplačen{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}PROSTI VRTENJE{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_si %}<li>{{ casino.adv1_si }}</li>{% endif %}
+	{% if casino.adv2_si %}<li>{{ casino.adv2_si }}</li>{% endif %}
+	{% if casino.adv3_si %}<li>{{ casino.adv3_si }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Najmanjši depozit{% endblock %}
+
+{% block license %}Licenca{% endblock %}
+
+{% block pay %}PLAČILNI SISTEM{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_si %}<li>{{ casino.adv1_si }}</li>{% endif %}
+	{% if casino.adv2_si %}<li>{{ casino.adv2_si }}</li>{% endif %}
+	{% if casino.adv3_si %}<li>{{ casino.adv3_si }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_si.all %}
+		{% if forloop.counter <= 9 %}
+			<a href="{% if gambler_id != 0 and casino.link_si %}{{ casino.link_si | build:gambler_id }}{% else %}{{ casino.link_si }}{% endif %}">
+				<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+			</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}IGRAJ ZDAJ{% endblock %}
+
+{% block copy %}Vse Pravice Pridržane{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}{% endblock %}
+
+{% block title %}Beste online casino's in Nederland{% endblock %}
+
+{% block welcome %}Welkomstbonus{% endblock %}
+
+{% block button %}Krijg Gratis{% endblock %}
+
+{% block button2 %}Krijg Gratis{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}GRATIS SPIN{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_nl %}<li>{{ casino.adv1_nl }}</li>{% endif %}
+	{% if casino.adv2_nl %}<li>{{ casino.adv2_nl }}</li>{% endif %}
+	{% if casino.adv3_nl %}<li>{{ casino.adv3_nl }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min aanbetaling{% endblock %}
+
+{% block license %}Licentie{% endblock %}
+
+{% block pay %}BETALINGSSYSTEEM{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_nl %}<li>{{ casino.adv1_nl }}</li>{% endif %}
+	{% if casino.adv2_nl %}<li>{{ casino.adv2_nl }}</li>{% endif %}
+	{% if casino.adv3_nl %}<li>{{ casino.adv3_nl }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_nl.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_nl %}{{ casino.link_nl | build:gambler_id }}{% else %}{{ casino.link_nl }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}NU AFSPELEN{% endblock %}
+
+{% block copy %}Alle Rechten Voorbehouden{% endblock %}

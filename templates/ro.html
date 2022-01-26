@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}{% endblock %}
+
+{% block title %}Cele mai bune cazinouri Online din România{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}ROTIRE GRATUITĂ{% endblock %}
+
+{% block info %}INFORMAȚII{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_ro %}<li>{{ casino.adv1_ro }}</li>{% endif %}
+	{% if casino.adv2_ro %}<li>{{ casino.adv2_ro }}</li>{% endif %}
+	{% if casino.adv3_ro %}<li>{{ casino.adv3_ro }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min depozit{% endblock %}
+
+{% block license %}Licență{% endblock %}
+
+{% block pay %}SISTEMUL DE PLATĂ{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_ro %}<li>{{ casino.adv1_ro }}</li>{% endif %}
+	{% if casino.adv2_ro %}<li>{{ casino.adv2_ro }}</li>{% endif %}
+	{% if casino.adv3_ro %}<li>{{ casino.adv3_ro }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_ro.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_ro %}{{ casino.link_ro | build:gambler_id }}{% else %}{{ casino.link_ro }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}JOACĂ ACUM{% endblock %}
+
+{% block copy %}Toate Drepturile Rezervate{% endblock %}

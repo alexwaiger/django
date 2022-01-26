@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}{% endblock %}
+
+{% block title %}Beste Online Kasinoene i Norge{% endblock %}
+
+{% block welcome %}Velkomstbonus{% endblock %}
+
+{% block button %}Få Gratis{% endblock %}
+
+{% block button2 %}Få Gratis{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}GRATIS SPINN{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_no %}<li>{{ casino.adv1_no }}</li>{% endif %}
+	{% if casino.adv2_no %}<li>{{ casino.adv2_no }}</li>{% endif %}
+	{% if casino.adv3_no %}<li>{{ casino.adv3_no }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min innskudd{% endblock %}
+
+{% block license %}Lisensiering{% endblock %}
+
+{% block pay %}BETALINGSSYSTEM{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_no %}<li>{{ casino.adv1_no }}</li>{% endif %}
+	{% if casino.adv2_no %}<li>{{ casino.adv2_no }}</li>{% endif %}
+	{% if casino.adv3_no %}<li>{{ casino.adv3_no }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_no.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_no %}{{ casino.link_no | build:gambler_id }}{% else %}{{ casino.link_no }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}SPILL NÅ{% endblock %}
+
+{% block copy %}Alle Rettigheter Reservert{% endblock %}

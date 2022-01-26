@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}{% endblock %}
+
+{% block title %}Best Оnlinе Саsinоs in USA{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}FREE SPIN{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_us %}<li>{{ casino.adv1_us }}</li>{% endif %}
+	{% if casino.adv2_us %}<li>{{ casino.adv2_us }}</li>{% endif %}
+	{% if casino.adv3_us %}<li>{{ casino.adv3_us }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min deposit{% endblock %}
+
+{% block license %}License{% endblock %}
+
+{% block pay %}PAYMENT SYSTEM{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_us %}<li>{{ casino.adv1_us }}</li>{% endif %}
+	{% if casino.adv2_us %}<li>{{ casino.adv2_us }}</li>{% endif %}
+	{% if casino.adv3_us %}<li>{{ casino.adv3_us }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_us.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_us %}{{ casino.link_us | build:gambler_id }}{% else %}{{ casino.link_us }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}PLAY NOW{% endblock %}
+
+{% block copy %}All Rights Reserved{% endblock %}

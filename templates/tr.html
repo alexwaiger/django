@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}{% endblock %}
+
+{% block title %}Türkiye'nin en iyi online casinoları{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}ÜCRETSİZ DÖNÜŞ{% endblock %}
+
+{% block info %}BİLGİ{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_tr %}<li>{{ casino.adv1_tr }}</li>{% endif %}
+	{% if casino.adv2_tr %}<li>{{ casino.adv2_tr }}</li>{% endif %}
+	{% if casino.adv3_tr %}<li>{{ casino.adv3_tr }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Minimum depozito{% endblock %}
+
+{% block license %}Lisans{% endblock %}
+
+{% block pay %}ÖDEME SİSTEMİ{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_tr %}<li>{{ casino.adv1_tr }}</li>{% endif %}
+	{% if casino.adv2_tr %}<li>{{ casino.adv2_tr }}</li>{% endif %}
+	{% if casino.adv3_tr %}<li>{{ casino.adv3_tr }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_tr.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_tr %}{{ casino.link_tr | build:gambler_id }}{% else %}{{ casino.link_tr }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}ŞİMDİ OYNA{% endblock %}
+
+{% block copy %}Tüm Hakları Saklıdır{% endblock %}

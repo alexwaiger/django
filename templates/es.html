@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}{% endblock %}
+
+{% block title %}Los Mejores Casinos en Línea en España{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}BONO{% endblock %}
+
+{% block fs %}VUELTA LIBRE{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_es %}<li>{{ casino.adv1_es }}</li>{% endif %}
+	{% if casino.adv2_es %}<li>{{ casino.adv2_es }}</li>{% endif %}
+	{% if casino.adv3_es %}<li>{{ casino.adv3_es }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min depósito{% endblock %}
+
+{% block license %}Licencia{% endblock %}
+
+{% block pay %}SISTEMA DE PAGO{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_es %}<li>{{ casino.adv1_es }}</li>{% endif %}
+	{% if casino.adv2_es %}<li>{{ casino.adv2_es }}</li>{% endif %}
+	{% if casino.adv3_es %}<li>{{ casino.adv3_es }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_es.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_es %}{{ casino.link_es | build:gambler_id }}{% else %}{{ casino.link_es }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}JUEGA AHORA{% endblock %}
+
+{% block copy %}Todos los Derechos Reservados{% endblock %}

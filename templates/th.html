@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}{% endblock %}
+
+{% block title %}ดีออนไลน์คาซิโนอยู่ในประเทศไทย{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}โบนัส{% endblock %}
+
+{% block fs %}หมุนอิสระ{% endblock %}
+
+{% block info %}ข้อมูล{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_th %}<li>{{ casino.adv1_th }}</li>{% endif %}
+	{% if casino.adv2_th %}<li>{{ casino.adv2_th }}</li>{% endif %}
+	{% if casino.adv3_th %}<li>{{ casino.adv3_th }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}มินนิรภัย{% endblock %}
+
+{% block license %}ใบอนุญาต{% endblock %}
+
+{% block pay %}ค่าจ้างของระบบ{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_th %}<li>{{ casino.adv1_th }}</li>{% endif %}
+	{% if casino.adv2_th %}<li>{{ casino.adv2_th }}</li>{% endif %}
+	{% if casino.adv3_th %}<li>{{ casino.adv3_th }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_th.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_th %}{{ casino.link_th | build:gambler_id }}{% else %}{{ casino.link_th }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}เล่นตอนนี้{% endblock %}
+
+{% block copy %}ทั้งสิทธิของจอ{% endblock %}

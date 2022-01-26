@@ -1,0 +1,58 @@
+{% extends "country.html" %}
+{% load linkbuilder %}
+
+{% block link %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link0 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link1 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link1-1 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link2 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link3 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link4 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link5 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+{% block link6 %}{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}{% endblock %}
+
+{% block title %}Terbaik dalam Talian Kasino di Malaysia{% endblock %}
+
+{% block welcome %}Welcome Bonus{% endblock %}
+
+{% block button %}Get Free{% endblock %}
+
+{% block button1 %}Get Free{% endblock %}
+
+{% block bonus %}BONUS{% endblock %}
+
+{% block fs %}PUTARAN BEBAS{% endblock %}
+
+{% block info %}INFO{% endblock %}
+
+{% block adv %}
+	{% if casino.adv1_my %}<li>{{ casino.adv1_my }}</li>{% endif %}
+	{% if casino.adv2_my %}<li>{{ casino.adv2_my }}</li>{% endif %}
+	{% if casino.adv3_my %}<li>{{ casino.adv3_my }}</li>{% endif %}
+{% endblock %}
+
+{% block mindep %}Min deposit{% endblock %}
+
+{% block license %}Lesen{% endblock %}
+
+{% block pay %}PEMBAYARAN SISTEM{% endblock %}
+
+{% block adv2 %}
+	{% if casino.adv1_my %}<li>{{ casino.adv1_my }}</li>{% endif %}
+	{% if casino.adv2_my %}<li>{{ casino.adv2_my }}</li>{% endif %}
+	{% if casino.adv3_my %}<li>{{ casino.adv3_my }}</li>{% endif %}
+{% endblock %}
+
+{% block payments %}
+	{% for pay in casino.pay_my.all %}
+		{% if forloop.counter <= 9 %}
+		<a href="{% if gambler_id != 0 and casino.link_my %}{{ casino.link_my | build:gambler_id }}{% else %}{{ casino.link_my }}{% endif %}" target="_blank">
+			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+		</a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block play %}BERMAIN SEKARANG{% endblock %}
+
+{% block copy %}Semua Hak Cipta{% endblock %}
