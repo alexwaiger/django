@@ -88,10 +88,10 @@ def home(request):
 
     countries = Countries.objects.all()
 
-    for c in countries:
-        if (c.slug.upper() == country) or (c.slug == country):
-            targetCountry = country.lower()
-            break
+    # for c in countries:
+        # if (c.slug.upper() == country) or (c.slug == country):
+            # targetCountry = country.lower()
+            # break
 
     if int(status) == 0:
         # --------------------------------- Сброс инфы на наш сервер
