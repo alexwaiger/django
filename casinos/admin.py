@@ -10,7 +10,7 @@ class CasinoAdmin(admin.ModelAdmin):
     filter_horizontal = ('country', 'pay')
     search_fields = ('name',)
     ordering = ('-is_active', 'position')
-    list_filter = (      
+    list_filter = (
         ('is_active'),
         ('country', RelatedDropdownFilter),
         ('license', ChoiceDropdownFilter),
