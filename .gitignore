@@ -132,3 +132,4 @@ dmypy.json
 *.pyc
 *.sqlite3
 *.json
+.idea
