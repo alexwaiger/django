@@ -211,7 +211,9 @@ def go(request, slug):
         full_link = link + postback_params
     else:
         full_link = link
-    
-    #context = {'casino': casino, 'partner': partner, 'postbacks':postbacks, 'link': link, 'full_link': full_link}
-    #temp = 'postback-test.html'
-    return redirect(full_link, permanent=True) #render(request, temp, context) 
+
+    if settings.DEBUG:
+        context = {'casino': casino, 'partner': partner, 'postbacks':postbacks, 'link': link, 'full_link': full_link}
+        temp = 'postback-test.html'
+        return render(request, temp, context)
+    return redirect(full_link, permanent=True) #render(request, temp, context)
