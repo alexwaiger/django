@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'z#&wrhn=dyz4tc2fb71!44r*k47d&%6g2hokaf*n)t@vx+-37c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 PWA_APP_DEBUG_MODE = False
 
@@ -112,6 +112,11 @@ LANGUAGES = (
   ('au', 'AU'),
   ('en', 'EN'),
 )
+
+try:
+    from main.project_settings import *
+except ImportError:
+    pass
 
 TIME_ZONE = 'UTC'
 
@@ -253,3 +258,8 @@ PWA_APP_SPLASH_SCREEN = [
 ]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = SITE_LANGUAGE
+
+try:
+    from main.local_settings import *
+except ImportError:
+    pass
