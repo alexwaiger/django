@@ -106,10 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-SITE_LANGUAGE = 'it'
+SITE_LANGUAGE = 'au'
 
 LANGUAGES = (
-  ('it', 'IT'),
+  ('au', 'AU'),
   ('en', 'EN'),
 )
 
