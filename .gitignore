@@ -131,5 +131,7 @@ dmypy.json
 # My
 *.pyc
 *.sqlite3
+*.sqlite33
+*.sqlite333
 *.json
 .idea

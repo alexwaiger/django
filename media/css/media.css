@@ -75,6 +75,10 @@
 	.rating-text {
 		font-size: 8px;
 	}
+	.logo a img {
+		width: 100px;
+		max-width: 90%;
+	}
 	.star {
 		width: 75px;
 	}	
@@ -146,20 +150,48 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
+	.h3, h3 {
+		font-size: 2rem;
+	}
 	.block-info {
 		display: inline;
+	}
+	.logo {
+		min-height: 244px;
+		flex-direction: column;
+  		justify-content: space-between;
+	}
+	.logo a {
+		min-height: 176px;
+	}
+	.block-logo .ld-icons {
+		display: none;
+	}
+	.ld-icons-desktop {
+		display: block;
+	}
+	.ld-icons-desktop .mindep, .ld-icons-desktop .license {
+		font-size: 12px;
+    	text-transform: uppercase;
+	}
+	.ld-icons-desktop .mindep span {
+		font-size: 2rem !important;
+	}
+	.ld-icons-desktop .license img {
+		max-width: 48px !important;
+		width: 48px !important;
 	}
 	.stars {
 		margin-bottom: 15px;
 		margin-top: 10px;
 	}
 	.promo .data img {
-		width: 24px;
+		width: 36px;
 		margin-top: 0px;
 		margin-bottom: 10px;
 	}
 	.fs .data img {
-		width: 24px;
+		width: 36px;
 		margin-top: 0px;
 		margin-bottom: 10px;
 	}

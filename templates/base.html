@@ -208,10 +208,25 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+            flex-direction: column;
+  		    justify-content: space-between;
 		}
-		.logo img {
-			max-width: 100px;
+		.logo a {
+			min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
 		}
+		.logo a img {
+			width: 100px;
+            max-width: 100%;
+		}
+        .ld-icons-desktop {
+            display: none;
+            min-height: 130px;
+		    text-align: center;
+        }
 		.p-logos {
 			position: relative;
 			text-align: center !important;

@@ -205,7 +205,7 @@ def go(request, slug):
             link = link + '?'
         else:
             link = link + '/?'
-    elif '?' in link and link.endswith('anid#registration') == False:
+    elif '?' in link and link.endswith('&') == False:
         link = link + '&'       
     else:
         link = link
