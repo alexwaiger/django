@@ -136,3 +136,4 @@ dmypy.json
 *.json
 .idea
 local_settings.py
+project_settings.py

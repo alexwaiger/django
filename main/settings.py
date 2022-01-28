@@ -113,6 +113,11 @@ LANGUAGES = (
   ('en', 'EN'),
 )
 
+try:
+    from main.project_settings import *
+except ImportError:
+    pass
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -255,6 +260,6 @@ PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = SITE_LANGUAGE
 
 try:
-    from local_settings import *
-except ImportError as e:
+    from main.local_settings import *
+except ImportError:
     pass
