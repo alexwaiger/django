@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'z#&wrhn=dyz4tc2fb71!44r*k47d&%6g2hokaf*n)t@vx+-37c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 PWA_APP_DEBUG_MODE = False
 
@@ -106,10 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-SITE_LANGUAGE = 'it'
+SITE_LANGUAGE = 'pl'
 
 LANGUAGES = (
-  ('it', 'IT'),
+  ('pl', 'PL'),
   ('en', 'EN'),
 )
 
