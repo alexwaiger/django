@@ -164,6 +164,10 @@
 	.logo a {
 		min-height: 176px;
 	}
+	.logo a img {
+		width: 150px;
+        max-width: 100%;
+	}
 	.block-logo .ld-icons {
 		display: none;
 	}
