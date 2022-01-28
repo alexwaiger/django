@@ -135,4 +135,4 @@ dmypy.json
 *.sqlite333
 *.json
 .idea
-settings.py
+local_settings.py
