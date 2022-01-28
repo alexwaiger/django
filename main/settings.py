@@ -109,6 +109,7 @@ LANGUAGE_CODE = 'en'
 SITE_LANGUAGE = 'en'
 
 LANGUAGES = (
+  ('it', 'IT'),
   ('en', 'EN'),
 )
 
