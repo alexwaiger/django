@@ -75,10 +75,6 @@
 	.rating-text {
 		font-size: 8px;
 	}
-	.logo a img {
-		width: 100px;
-		max-width: 90%;
-	}
 	.star {
 		width: 75px;
 	}	
@@ -94,12 +90,19 @@
 		width: 100%;
 		display: block;
 	}
+	.logo a img {
+		width: 100px;
+		max-width: 90%;
+	}
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 380px) and (max-width : 480px) {
 	.logo img {
 		max-width: 72px;
+	}
+	.block-logo .ld-icons {
+		margin: 0;
 	}
 	.star {
 		width: 75px;
@@ -186,7 +189,6 @@
 		width: 48px !important;
 	}
 	.stars {
-		margin-bottom: 15px;
 		margin-top: 10px;
 	}
 	.promo .data img {
