@@ -121,4 +121,4 @@ class Casino(models.Model):
 
     class Meta:
         verbose_name  = u"Casino"
-        verbose_name_plural  = u"Casinos"
+        verbose_name_plural  = u"Casinos" 
