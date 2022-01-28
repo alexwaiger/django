@@ -179,7 +179,10 @@ def go(request, slug):
                 postback_params = postback_params + '&' + postback.name + '=' + gambler_id
             iter += 1
     
-    link = casino.link
+    if casino.link:
+        link = casino.link
+    else:
+        link = country_slug
     
     if link.endswith('&'):
         link = link
