@@ -136,13 +136,14 @@ def countries(request, slug):
         country = countries.filter(is_active=True)[0]
 
     if country:
+        frozen_casino_list = Casino.objects.filter(is_active=True, top_position=None, country=country).order_by('position')
         top_casino_list = Casino.objects.filter(is_active=True, top_position=1, country=country).order_by('real_position')
         middle_casino_list = Casino.objects.filter(is_active=True, top_position=2, country=country).order_by('real_position')
-        bottom_casino_list = Casino.objects.filter(is_active=True, top_position=0, country=country).order_by('real_position')
+
     else:
+        frozen_casino_list = Casino.objects.filter(is_active=True, top_position=None).order_by('position')
         top_casino_list = Casino.objects.filter(is_active=True, top_position=1).order_by('real_position')
         middle_casino_list = Casino.objects.filter(is_active=True, top_position=2).order_by('real_position')
-        bottom_casino_list = Casino.objects.filter(is_active=True, top_position=0).order_by('real_position')
 
     top_len = len(top_casino_list)
     middle_len = len(middle_casino_list)
@@ -182,7 +183,7 @@ def countries(request, slug):
             t = top_len + 1
         casino.save()
 
-    casino_list = list(chain(top_casino_list, middle_casino_list, bottom_casino_list))
+    casino_list = list(chain(frozen_casino_list, top_casino_list, middle_casino_list))
 
     provider_list = Software.objects.all()[:24]
     if casino_list:
@@ -280,7 +281,7 @@ def clean(request):
                 casino.save()
             except:
                 context = {'message': 'Error', 'text': 'Try Again', 'link': '/admin/clean-positions/'}
-        context = {'message': 'Well Done', 'text': 'Clean Again', 'link': '/admin/clean-positions/'}
+        context = {'message': 'Well Done', 'text': 'Go to Admin', 'link': '/admin/'}
     else:
         context = {'message': 'Blocked', 'text': 'Please Log In', 'link': '/admin/'}
     return render(request, 'clean.html', context)

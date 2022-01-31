@@ -84,8 +84,8 @@ header {
 										<img src="{{ casino.logo.lazy_logo.url }}" data-src="{{ casino.logo.site_logo.url }}" alt="{{ casino.name }}" />
 									</a>
 									<div class="stars col-12 col-lg-12">
-										<img class="star" src="/media/img/stars/star-{{ casino.trust_score }}.png" data-src="/media/img/stars/star-{{ casino.trust_score }}.png" alt="rating">
-										<div class="rating-text light">Score - {{ casino.get_trust_score_display }}/5 ({{ casino.votes }} Votes)</div>
+										<img class="star" src="/media/img/stars/star-{{ forloop.counter0|stars }}.png" data-src="/media/img/stars/star-{{ forloop.counter0|stars }}.png" alt="rating">
+										<div class="rating-text light">Score - {{ forloop.counter0|rating }}/5 ({{ forloop.counter0|votes }} Votes)</div>
 									</div>
 								</div>
 								<div class="ld-icons col-12 col-lg-12">

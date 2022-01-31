@@ -87,8 +87,8 @@ class Casino(models.Model):
     name = models.CharField(u'Title', max_length=50)
     partner = models.ForeignKey(Partner, related_name='aff', blank=True, null=True, on_delete=models.CASCADE)
     badge = models.ForeignKey(Badge, related_name='casino_badge', blank=True, null=True, on_delete=models.CASCADE)
-    trust_score = models.CharField(u'Trust & Fairness Score', max_length=3, choices = CHOICES)
-    votes = models.IntegerField(u'Rating Votes', null=True, blank=True, default=0)
+    #trust_score = models.CharField(u'Trust & Fairness Score', max_length=3, choices = CHOICES)
+    #votes = models.IntegerField(u'Rating Votes', null=True, blank=True, default=0)
     license = models.CharField(u'License', max_length=3, choices = LICENSES, default=2)
     logo = ThumbnailerImageField(u'Casino Logo', upload_to="upload/img/logos/")
     country = models.ManyToManyField(Countries, default=None, related_name='countries', blank=True)
@@ -107,7 +107,7 @@ class Casino(models.Model):
     cashback = models.IntegerField(u'CashBack %', null=False, blank=False, default=0)
     fs = models.IntegerField(u'Free Spins', null=False, blank=False, default=0)
 
-    real_position = models.IntegerField(u'Real Position', default=2, blank=True, null=True)
+    real_position = models.IntegerField(u'Real Position', default=None, blank=True, null=True)
 
     def __str__(self):
         return self.name

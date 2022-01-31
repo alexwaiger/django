@@ -6,7 +6,7 @@ from django_admin_listfilter_dropdown.filters import DropdownFilter, RelatedDrop
 from .models import Payment, Software, Casino, Badge
 
 class CasinoAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_active', 'position', 'real_position')
+    list_display = ('name', 'is_active', 'position', 'top_position', 'real_position')
     filter_horizontal = ('country', 'pay')
     search_fields = ('name',)
     ordering = ('-is_active', 'position')
