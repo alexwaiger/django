@@ -275,8 +275,8 @@ def clean(request):
             try:
                 casino.save()
             except:
-                context = {'meassage': 'Error', 'text': 'Try Again', 'link': '/clean-position/'}
-        context = {'meassage': 'Well Done', 'text': 'Clean Again', 'link': '/clean-position/'}
+                context = {'message': 'Error', 'text': 'Try Again', 'link': '/admin/clean-positions/'}
+        context = {'message': 'Well Done', 'text': 'Clean Again', 'link': '/admin/clean-positions/'}
     else:
-        context = {'meassage': 'Blocked', 'text': 'Please Log In', 'link': '/admin/'}
+        context = {'message': 'Blocked', 'text': 'Please Log In', 'link': '/admin/'}
     return render(request, 'clean.html', context)
