@@ -51,6 +51,14 @@ def dynamic_rating(position):
 @register.filter(name='stars', is_safe=True)
 def dynamic_stars(position):
     rating = 50 - position
+    if rating < 40 and rating > 30:
+        rating = 35
+    elif rating < 30 and rating > 20:
+        rating = 25
+    elif rating < 20 and rating > 10:
+        rating = 15
+    else:
+        rating = rating
     return rating
 
 @register.filter(name='votes', is_safe=True)
