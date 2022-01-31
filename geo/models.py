@@ -33,6 +33,7 @@ class Countries(models.Model):
     promo1 = models.CharField(u'Текст в шапке (верх)', max_length=300, blank=True, null=True)
     promo2 = models.CharField(u'Текст в шапке (низ)', max_length=300, blank=True, null=True)
     theme = models.ForeignKey(Theme, related_name='country_theme', blank=True, null=True, default=None, on_delete=models.CASCADE)
+    rotate = models.BooleanField(u'Перемешивание топа', default=False, blank=True, null=False)
     
     def __str__(self):
         return self.name

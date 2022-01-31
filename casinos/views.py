@@ -139,7 +139,6 @@ def countries(request, slug):
         frozen_casino_list = Casino.objects.filter(is_active=True, top_position=None, country=country).order_by('position')
         top_casino_list = Casino.objects.filter(is_active=True, top_position=1, country=country).order_by('real_position')
         middle_casino_list = Casino.objects.filter(is_active=True, top_position=2, country=country).order_by('real_position')
-
     else:
         frozen_casino_list = Casino.objects.filter(is_active=True, top_position=None).order_by('position')
         top_casino_list = Casino.objects.filter(is_active=True, top_position=1).order_by('real_position')
@@ -148,40 +147,38 @@ def countries(request, slug):
     top_len = len(top_casino_list)
     middle_len = len(middle_casino_list)
 
-    t = 1
-    for casino in top_casino_list:
-        if casino.real_position != 0:
-            if casino.real_position < top_len:
-                casino.real_position += 1
+    if country.rotate:
+        t = 1
+        for casino in top_casino_list:
+            if casino.real_position != 0:
+                if casino.real_position < top_len:
+                    casino.real_position += 1
+                else:
+                    casino.real_position = 1
             else:
-                casino.real_position = 1
-        else:
-            casino.real_position = t
-        casino.save()
-        if t < top_len:
-            t += 1
-        else:
-            t = 1
-
-
-
-    t = top_len + 1
-    middle_len_t = middle_len + top_len
-
-    for casino in middle_casino_list:
-        if casino.real_position != 0:
-            if casino.real_position > top_len and casino.real_position < middle_len_t:
-                casino.real_position += 1
+                casino.real_position = t
+            casino.save()
+            if t < top_len:
+                t += 1
             else:
-                casino.real_position = top_len + 1
-        else:
-            casino.real_position = t
+                t = 1
 
-        if t < middle_len_t:
-            t += 1
-        else:
-            t = top_len + 1
-        casino.save()
+        t = top_len + 1
+        middle_len_t = middle_len + top_len
+
+        for casino in middle_casino_list:
+            if casino.real_position != 0:
+                if casino.real_position > top_len and casino.real_position < middle_len_t:
+                    casino.real_position += 1
+                else:
+                    casino.real_position = top_len + 1
+            else:
+                casino.real_position = t
+            casino.save()
+            if t < middle_len_t:
+                t += 1
+            else:
+                t = top_len + 1
 
     casino_list = list(chain(frozen_casino_list, top_casino_list, middle_casino_list))
 
