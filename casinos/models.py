@@ -32,6 +32,11 @@ LICENSES = (
     ('3', 'AAMS'),
 )
 
+TOPS = (
+    ('1', 'First'),
+    ('2', 'Second'),
+)
+
 COLORS = (
     ('blue-band.png', 'Blue'),
     ('darkblue-band.png', 'DarkBlue'),
@@ -90,6 +95,7 @@ class Casino(models.Model):
     
     pay = models.ManyToManyField(Payment, related_name='pays', blank=True)
     position = models.IntegerField(u'Position', default=0, blank=False, null=False)
+    top_position = models.CharField(u'Top position', max_length=3, choices=TOPS, default=2, blank=True, null=True)
     link = models.CharField(u'Link', max_length=180, help_text=u"Если в ссылке уже есть знак ? то она должна оканчиваться на знак &, если нет, то на знак ?", blank=True, null=True)
     adv1 = models.CharField(u'Promo1', max_length=50, blank=True, null=True)
     adv2 = models.CharField(u'Promo2', max_length=50, blank=True, null=True)
@@ -100,6 +106,8 @@ class Casino(models.Model):
     limit = models.IntegerField(u'Bonus limit', null=False, blank=False, default=0)
     cashback = models.IntegerField(u'CashBack %', null=False, blank=False, default=0)
     fs = models.IntegerField(u'Free Spins', null=False, blank=False, default=0)
+
+    real_position = models.IntegerField(u'Real Position', default=2, blank=True, null=True)
 
     def __str__(self):
         return self.name

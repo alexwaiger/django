@@ -16,6 +16,7 @@ urlpatterns = [
     url('', include('pwa.urls')),
 ]
 urlpatterns += [
+    path('admin/clean-positions/', views.clean, name='clean'),
     path('admin/', admin.site.urls),
     path(r'go/<slug:slug>/', views.go, name='go'),
     path(r'<slug:slug>/', views.countries, name='countries'),

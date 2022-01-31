@@ -21,6 +21,8 @@ import json
 
 import re
 
+from itertools import chain
+
 from django.utils import translation
 
 from .models import Casino, Software
@@ -129,11 +131,55 @@ def countries(request, slug):
     
     try:
         country = countries.get(slug=slug)
-        casino_list = Casino.objects.filter(is_active=True, country=country).order_by('position')
     except:
         casino_list = Casino.objects.filter(is_active=True).order_by('position')
         country = countries.filter(is_active=True)[0]
-        
+
+    if country:
+        top_casino_list = Casino.objects.filter(is_active=True, top_position=1, country=country).order_by('real_position')
+        middle_casino_list = Casino.objects.filter(is_active=True, top_position=2, country=country).order_by('real_position')
+        bottom_casino_list = Casino.objects.filter(is_active=True, top_position=0, country=country).order_by('real_position')
+    else:
+        top_casino_list = Casino.objects.filter(is_active=True, top_position=1).order_by('real_position')
+        middle_casino_list = Casino.objects.filter(is_active=True, top_position=2).order_by('real_position')
+        bottom_casino_list = Casino.objects.filter(is_active=True, top_position=0).order_by('real_position')
+
+
+
+    t = 1
+    for casino in top_casino_list:
+        if casino.real_position != 0:
+            if casino.real_position < 3:
+                casino.real_position += 1
+            else:
+                casino.real_position = 1
+        else:
+            casino.real_position = t
+        casino.save()
+        if t < 3:
+            t += 1
+        else:
+            t = 1
+
+    t = 4
+    middle_len = len(middle_casino_list) + 3
+    for casino in middle_casino_list:
+        if casino.real_position != 0:
+            if casino.real_position > 3 and casino.real_position < middle_len:
+                casino.real_position += 1
+            else:
+                casino.real_position = 4
+        else:
+            casino.real_position = t
+
+        if t < middle_len:
+            t += 1
+        else:
+            t = 4
+        casino.save()
+
+    casino_list = list(chain(top_casino_list, middle_casino_list, bottom_casino_list))
+
     provider_list = Software.objects.all()[:24]
     if casino_list:
         casino = casino_list[0]
@@ -220,3 +266,17 @@ def go(request, slug):
         temp = 'postback-test.html'
         return render(request, temp, context)
     return redirect(full_link, permanent=True) #render(request, temp, context)
+
+def clean(request):
+    if request.user.is_authenticated:
+        casinos = Casino.objects.all()
+        for casino in casinos:
+            casino.real_position = 0
+            try:
+                casino.save()
+            except:
+                context = {'meassage': 'Error', 'text': 'Try Again', 'link': '/clean-position/'}
+        context = {'meassage': 'Well Done', 'text': 'Clean Again', 'link': '/clean-position/'}
+    else:
+        context = {'meassage': 'Blocked', 'text': 'Please Log In', 'link': '/admin/'}
+    return render(request, 'clean.html', context)

@@ -1,15 +1,7 @@
 {% extends "country.html" %}
 {% load linkbuilder %}
 
-{% block link %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link0 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link1 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link1-1 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link2 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link3 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link4 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link5 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
-{% block link6 %}{% if gambler_id != 0 and casino.link_cz %}{{ casino.link_cz | build:gambler_id }}{% else %}{{ casino.link_cz }}{% endif %}{% endblock %}
+{% block lang %}cz{% endblock %}
 
 {% block title %}Nejlepší online kasina v České republice{% endblock %}
 
@@ -21,36 +13,28 @@
 
 {% block bonus %}BONUS{% endblock %}
 
-{% block fs %}ZDARMA TOČENÍ{% endblock %}
+{% block fs %}FREE SPIN{% endblock %}
 
 {% block info %}INFORMACE{% endblock %}
 
 {% block adv %}
-	{% if casino.adv1_cz %}<li>{{ casino.adv1_cz }}</li>{% endif %}
-	{% if casino.adv2_cz %}<li>{{ casino.adv2_cz }}</li>{% endif %}
-	{% if casino.adv3_cz %}<li>{{ casino.adv3_cz }}</li>{% endif %}
+	{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+	{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+	{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
 {% endblock %}
 
 {% block mindep %}Min vklad{% endblock %}
+{% block mindep-desk %}Min vklad{% endblock %}
 
 {% block license %}Licence{% endblock %}
+{% block license-desk %}Licence{% endblock %}
 
 {% block pay %}PLATBA{% endblock %}
 
 {% block adv2 %}
-	{% if casino.adv1_cz %}<li>{{ casino.adv1_cz }}</li>{% endif %}
-	{% if casino.adv2_cz %}<li>{{ casino.adv2_cz }}</li>{% endif %}
-	{% if casino.adv3_cz %}<li>{{ casino.adv3_cz }}</li>{% endif %}
-{% endblock %}
-
-{% block payments %}
-	{% for pay in casino.pay_cs.all %}
-		{% if forloop.counter <= 9 %}
-		<a href="{% if gambler_id != 0 and casino.link_cs %}{{ casino.link_cs | build:gambler_id }}{% else %}{{ casino.link_cs }}{% endif %}" target="_blank">
-			<img class="game-card__bank-img" src="{{ pay.logo.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
-		</a>
-		{% endif %}
-	{% endfor %}
+	{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
+	{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
+	{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
 {% endblock %}
 
 {% block play %}HRÁT TEĎ{% endblock %}
