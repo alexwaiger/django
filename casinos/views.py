@@ -144,38 +144,42 @@ def countries(request, slug):
         middle_casino_list = Casino.objects.filter(is_active=True, top_position=2).order_by('real_position')
         bottom_casino_list = Casino.objects.filter(is_active=True, top_position=0).order_by('real_position')
 
-
+    top_len = len(top_casino_list)
+    middle_len = len(middle_casino_list)
 
     t = 1
     for casino in top_casino_list:
         if casino.real_position != 0:
-            if casino.real_position < 3:
+            if casino.real_position < top_len:
                 casino.real_position += 1
             else:
                 casino.real_position = 1
         else:
             casino.real_position = t
         casino.save()
-        if t < 3:
+        if t < top_len:
             t += 1
         else:
             t = 1
 
-    t = 4
-    middle_len = len(middle_casino_list) + 3
+
+
+    t = top_len + 1
+    middle_len_t = middle_len + top_len
+
     for casino in middle_casino_list:
         if casino.real_position != 0:
-            if casino.real_position > 3 and casino.real_position < middle_len:
+            if casino.real_position > top_len and casino.real_position < middle_len_t:
                 casino.real_position += 1
             else:
-                casino.real_position = 4
+                casino.real_position = top_len + 1
         else:
             casino.real_position = t
 
-        if t < middle_len:
+        if t < middle_len_t:
             t += 1
         else:
-            t = 4
+            t = top_len + 1
         casino.save()
 
     casino_list = list(chain(top_casino_list, middle_casino_list, bottom_casino_list))
