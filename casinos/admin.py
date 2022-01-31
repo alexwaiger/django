@@ -18,7 +18,7 @@ class CasinoAdmin(admin.ModelAdmin):
     )
     list_editable = ('is_active', 'position')
     save_on_top = True
-    #readonly_fields = ('real_position',)
+    readonly_fields = ('real_position',)
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('name',)      
