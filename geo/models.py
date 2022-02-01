@@ -40,8 +40,9 @@ class Countries(models.Model):
 
     pay1 = models.IntegerField(u'Выделить платежку (Правый верхний угол) Ввести ID', null=True, blank=True, default=0)
     pay2 = models.IntegerField(u'Выделить платежку (Правый нижний угол) Ввести ID', null=True, blank=True, default=0)
-    # payment = models.ForeignKey(Payment, related_name='country_payment', blank=True, null=True, default=None, on_delete=models.CASCADE)
+    
     rotate = models.BooleanField(u'Перемешивание топа', default=False, blank=True, null=False)
+
     tr_play = models.CharField(u'Текст на КНОПКЕ', max_length=24, blank=True, null=True)
     tr_bonus = models.CharField(u'Текст БОНУС', max_length=24, blank=True, null=True)
     tr_fs = models.CharField(u'Текст ФРИ СПИНЫ', max_length=24, blank=True, null=True)
