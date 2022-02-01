@@ -39,7 +39,7 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 380px) {
-	.logo img {
+	.logo .logo-img {
 		max-width: 60px;
 	}
 	.head-icon img {
@@ -90,7 +90,7 @@
 		width: 100%;
 		display: block;
 	}
-	.logo a img {
+	.logo .logo-link .logo-img {
 		width: 100px;
 		max-width: 90%;
 	}
@@ -98,7 +98,7 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 380px) and (max-width : 480px) {
-	.logo img {
+	.logo .logo-link .logo-img {
 		max-width: 72px;
 	}
 	.block-logo .ld-icons {
@@ -148,7 +148,19 @@
 	ul.anime:hover {
 		-webkit-animation-play-state: paused;
 		animation-play-state: paused;
-	}	
+	}
+	.pay1, .pay2 {
+        position: absolute;
+        width: 96px;
+    }
+	.pay1 {
+		top: -20px;
+		right: -20px;
+	}
+	.pay2 {
+		bottom: 20px;
+		right: -20px;
+	}
 }
 
 /* Medium Devices, Desktops */
@@ -164,10 +176,10 @@
 		flex-direction: column;
   		justify-content: space-between;
 	}
-	.logo a {
+	.logo .logo-link {
 		min-height: 176px;
 	}
-	.logo a img {
+	.logo .logo-link .logo-img {
 		width: 150px;
         max-width: 100%;
 	}

@@ -25,8 +25,7 @@ from itertools import chain
 
 from django.utils import translation
 
-from .models import Casino, Software
-from geo.models import Countries
+from .models import Casino, Software, Countries
 from postbacks.models import Postback, Partner
 
 from django.views.decorators.cache import never_cache
@@ -167,7 +166,7 @@ def countries(request, slug):
         middle_len_t = middle_len + top_len
 
         for casino in middle_casino_list:
-            if casino.real_position != 0:
+            if casino.real_position != 0 and casino.real_position != None:
                 if casino.real_position > top_len and casino.real_position < middle_len_t:
                     casino.real_position += 1
                 else:
@@ -187,12 +186,8 @@ def countries(request, slug):
         casino = casino_list[0]
     else:
         casino = Casino.objects.get(name="Boka")
-        
-    if country_lang == 'en':
-        temp = 'country.html'
-    else:
-        temp = country_lang + '.html'
-        
+
+    temp = 'country.html'
     context = {'casino_list': casino_list, 'providers': provider_list, 'gambler_id':gambler_id, 'countries':countries, 'country':country, 'casino':casino,}
     return render(request, temp, context)
     

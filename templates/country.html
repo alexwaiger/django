@@ -2,7 +2,7 @@
 {% load thumbnail %}
 {% load easy_thumbnails_tags %}
 {% load linkbuilder %}
-{% block title %}Best Оnlinе Саsinоs in {% now "F Y" %}{% endblock %}
+{% block title %}{% if country.text %}{{ country.text }}{% else %}Best Оnlinе Саsinоs{% endif %} — {% now "F Y" %}{% endblock %}
 
 {% block style %}
 body {
@@ -80,12 +80,29 @@ header {
 						<div class="container gx-1">
 							<div class="row gx-1">
 								<div class="logo col-12 col-lg-12">
-									<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
-										<img src="{{ casino.logo.lazy_logo.url }}" data-src="{{ casino.logo.site_logo.url }}" alt="{{ casino.name }}" />
+
+                                                {% for pay in casino.pay.all %}
+                                                    {% if pay.id == country.pay1 %}
+                                                        <div class="pay1">
+                                                            <a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+                                                                <img src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+                                                            </a>
+                                                        </div>
+                                                    {% elif pay.id == country.pay2 %}
+                                                        <div class="pay2">
+                                                            <a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+                                                                <img src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+                                                            </a>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+
+									<a class="logo-link" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+										<img class="logo-img" src="{{ casino.logo.lazy_logo.url }}" data-src="{{ casino.logo.site_logo.url }}" alt="{{ casino.name }}" />
 									</a>
 									<div class="stars col-12 col-lg-12">
 										<img class="star" src="/media/img/stars/star-{{ forloop.counter0|stars }}.png" data-src="/media/img/stars/star-{{ forloop.counter0|stars }}.png" alt="rating">
-										<div class="rating-text light">Score - {{ forloop.counter0|rating }}/5 ({{ forloop.counter0|votes }} Votes)</div>
+										<div class="rating-text light">{% if country.tr_score %}{{ country.tr_score }}{% else %}Score{% endif %} - {{ forloop.counter0|rating }}/5 ({{ forloop.counter0|votes }} {% if country.tr_votes %}{{ country.tr_votes }}{% else %}Votes{% endif %})</div>
 									</div>
 								</div>
 								<div class="ld-icons col-12 col-lg-12">
@@ -93,11 +110,11 @@ header {
 										<div class="icons col-12 col-lg-12">
 											<div class="data row">
 												<div class="license light col-6">
-													<div>{% block license %}License{% endblock %}</div>
+													<div>{% if country.tr_license %}{{ country.tr_license }}{% else %}License{% endif %}</div>
 													<span><img src="/media/img/license/{{ casino.license }}.png" data-src="/media/img/license/{{ casino.license }}.png" /></span>
 												</div>											
 												<div class="mindep light col-6">
-													<div>{% block mindep %}Min Dep{% endblock %}</div><span>{{ casino.min_dep }}{{ country.currency.symbol }}</span>
+													<div>{% if country.tr_md %}{{ country.tr_md }}{% else %}Min Dep{% endif %}</div><span>{{ casino.min_dep }}{{ country.currency.symbol }}</span>
 												</div>								
 											</div>
 										</div>
@@ -115,11 +132,11 @@ header {
                                             <div class="icons col-12 col-lg-12">
                                                 <div class="data row">
                                                     <div class="license light col-6">
-                                                        <div>{% block license-desk %}License{% endblock %}</div>
+                                                        <div>{% if country.tr_license %}{{ country.tr_license }}{% else %}License{% endif %}</div>
                                                         <span><img src="/media/img/license/{{ casino.license }}.png" data-src="/media/img/license/{{ casino.license }}.png" /></span>
                                                     </div>
                                                     <div class="mindep light col-6">
-                                                        <div>{% block mindep-desk %}Min Dep{% endblock %}</div><span>{{ casino.min_dep }}{{ country.currency.symbol }}</span>
+                                                        <div>{% if country.tr_md %}{{ country.tr_md }}{% else %}Min Dep{% endif %}</div><span>{{ casino.min_dep }}{{ country.currency.symbol }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,7 +145,7 @@ header {
 								{% if casino.limit == 0 and casino.fs == 0 %}
 									<div class="cashback light col-12">
 										<div class="title">
-											{% block cashback %}CASHBACK{% endblock %}
+											{% if country.tr_cashback %}{{ country.tr_cashback }}{% else %}CASHBACK{% endif %}
 										</div>
 										<div class="data">
 											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
@@ -145,7 +162,7 @@ header {
 									{% if casino.limit != 0 %}
 									<div class="promo light col-6">
 										<div class="title">
-											{% block bonus %}BONUS{% endblock %}
+											{% if country.tr_bonus %}{{ country.tr_bonus }}{% else %}BONUS{% endif %}
 										</div>
 										<div class="data">
 											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
@@ -161,7 +178,7 @@ header {
 									{% else %}
 									<div class="cashback light col-6">
 										<div class="title">
-											{% block cashback2 %}CASHBACK{% endblock %}
+											{% if country.tr_cashback %}{{ country.tr_cashback }}{% else %}CASHBACK{% endif %}
 										</div>
 										<div class="data">
 											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
@@ -178,7 +195,7 @@ header {
 									{% if casino.fs != 0 %}
 									<div class="fs light col-6">
 										<div class="title">
-											{% block fs %}FREE SPIN{% endblock %}
+											{% if country.tr_fs %}{{ country.tr_fs }}{% else %}FREE SPIN{% endif %}
 										</div>
 										<div class="data">
 											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
@@ -194,7 +211,7 @@ header {
 									{% else %}
 									<div class="cashback light col-6">
 										<div class="title">
-											{% block cashback3 %}CASHBACK{% endblock %}
+											{% if country.tr_cashback %}{{ country.tr_cashback }}{% else %}CASHBACK{% endif %}
 										</div>
 										<div class="data">
 											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
@@ -215,39 +232,35 @@ header {
 								<div class="row">
 									<div class="block-info light col-lg-12">
 										<div class="title">
-											{% block info %}INFO{% endblock %}
+											{% if country.tr_info %}{{ country.tr_info }}{% else %}STRENGTHS{% endif %}
 										</div>
 										<div class="data">
 											<ul class="texts">
-											{% block adv %}
 												{% if casino.adv1 %}<li>{{ casino.adv1 }}</li>{% endif %}
 												{% if casino.adv2 %}<li>{{ casino.adv2 }}</li>{% endif %}
 												{% if casino.adv3 %}<li>{{ casino.adv3 }}</li>{% endif %}
-											{% endblock %}
 											</ul>
 										</div>
 									</div>
 									<div class="p-logos col-12">
 										<div class="title light">
-											{% block pay %}PAYMENT SYSTEMS{% endblock %}
+											{% if country.tr_pay %}{{ country.tr_pay }}{% else %}PAYMENT SYSTEMS{% endif %}
 										</div>
 										<div class="data">
-											{% block payments %}
-												<ul class="anime">
-													{% for pay in casino.pay.all %}
-															<li>
-																<a class="anime" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
-																	<img class="bank-img" src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
-																</a>
-															</li>
-													{% endfor %}
-												</ul>
-											{% endblock %}
+                                            <ul class="anime">
+                                                {% for pay in casino.pay.all %}
+                                                    <li>
+                                                        <a class="anime" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+                                                            <img class="bank-img" src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
 										</div>
 									</div>
 									<div class="buttons col-12">
 											<a class="play-button light-box light" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
-												{% block play %}CLAIM BONUS{% endblock %}
+												{% if country.tr_play %}{{ country.tr_play }}{% else %}CLAIM BONUS{% endif %}
 											</a>
 									</div>
 								</div>
@@ -260,4 +273,4 @@ header {
 	{% endfor %}							
 {% endblock %}
 
-{% block copy %}All Rights Reserved{% endblock %}
+{% if country.tr_copy %}{{ country.tr_copy }}{% else %}All Right Reserved{% endif %}

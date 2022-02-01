@@ -5,27 +5,6 @@ from easy_thumbnails.fields import ThumbnailerImageField
 from postbacks.models import Partner
 from geo.models import Countries
 
-CHOICES = (
-    ('50', '5.0'),
-    ('49', '4.9'),
-    ('48', '4.8'),
-    ('47', '4.7'),
-    ('46', '4.6'),
-    ('45', '4.5'),
-    ('44', '4.4'),
-    ('43', '4.3'),
-    ('42', '4.2'),
-    ('41', '4.1'),
-    ('40', '4.0'),
-    ('35', '3.5'),
-    ('30', '3.0'),
-    ('25', '2.5'),
-    ('20', '2.0'),
-    ('15', '1.5'),
-    ('10', '1.0'),
-    ('0', '0.0'),
-)
-
 LICENSES = (
     ('1', 'Curacao'),
     ('2', 'Malta'),
@@ -47,6 +26,7 @@ COLORS = (
     ('purple-band.png', 'Purple'),
     ('orange-band.png', 'Orange'),
 )
+
 
 class Payment(models.Model):
     name =  models.CharField(u'name', max_length=50, blank=False)
@@ -87,8 +67,6 @@ class Casino(models.Model):
     name = models.CharField(u'Title', max_length=50)
     partner = models.ForeignKey(Partner, related_name='aff', blank=True, null=True, on_delete=models.CASCADE)
     badge = models.ForeignKey(Badge, related_name='casino_badge', blank=True, null=True, on_delete=models.CASCADE)
-    #trust_score = models.CharField(u'Trust & Fairness Score', max_length=3, choices = CHOICES)
-    #votes = models.IntegerField(u'Rating Votes', null=True, blank=True, default=0)
     license = models.CharField(u'License', max_length=3, choices = LICENSES, default=2)
     logo = ThumbnailerImageField(u'Casino Logo', upload_to="upload/img/logos/")
     country = models.ManyToManyField(Countries, default=None, related_name='countries', blank=True)

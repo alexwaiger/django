@@ -21,15 +21,17 @@ class CasinoAdmin(admin.ModelAdmin):
     readonly_fields = ('real_position',)
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('name',)      
+    list_display = ('name', 'id')
+    search_fields = ('name',)
 
 class SoftwareAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    search_fields = ('name',)
 
 class BadgeAdmin(admin.ModelAdmin):
-    list_display = ('name',)      
+    list_display = ('name',)
     
 admin.site.register(Casino, CasinoAdmin)
-admin.site.register(Payment, SoftwareAdmin)
-admin.site.register(Software, PaymentAdmin)
+admin.site.register(Payment, PaymentAdmin)
+admin.site.register(Software, SoftwareAdmin)
 admin.site.register(Badge, BadgeAdmin)
