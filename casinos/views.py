@@ -150,7 +150,7 @@ def countries(request, slug):
     if country.rotate:
         t = 1
         for casino in top_casino_list:
-            if casino.real_position != 0:
+            if casino.real_position != 0 and casino.real_position != None:
                 if casino.real_position < top_len:
                     casino.real_position += 1
                 else:
