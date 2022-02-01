@@ -40,7 +40,7 @@ class Countries(models.Model):
 
     pay1 = models.IntegerField(u'Выделить платежку (Правый верхний угол) Ввести ID', null=True, blank=True, default=0)
     pay2 = models.IntegerField(u'Выделить платежку (Правый нижний угол) Ввести ID', null=True, blank=True, default=0)
-    
+
     rotate = models.BooleanField(u'Перемешивание топа', default=False, blank=True, null=False)
 
     tr_play = models.CharField(u'Текст на КНОПКЕ', max_length=24, blank=True, null=True)

@@ -231,7 +231,10 @@
 	.cashback .data a {
 		width: 100%;
 		display: block;
-	}		
+	}
+	.desk-title {
+		margin-bottom: 12px !important;
+	}
 }
 
 /* Large Devices, Wide Screens */
