@@ -74,7 +74,7 @@ class Casino(models.Model):
     pay = models.ManyToManyField(Payment, related_name='pays', blank=True)
     position = models.IntegerField(u'Position', default=0, blank=False, null=False)
     top_position = models.CharField(u'Top position', max_length=3, choices=TOPS, default=2, blank=True, null=True)
-    link = models.CharField(u'Link', max_length=180, help_text=u"Если в ссылке уже есть знак ? то она должна оканчиваться на знак &, если нет, то на знак ?", blank=True, null=True)
+    link = models.CharField(u'Link', max_length=180, blank=False, null=True, default=None)
     adv1 = models.CharField(u'Promo1', max_length=50, blank=True, null=True)
     adv2 = models.CharField(u'Promo2', max_length=50, blank=True, null=True)
     adv3 = models.CharField(u'Promo3', max_length=50, blank=True, null=True)

@@ -84,20 +84,20 @@ header {
                                                 {% for pay in casino.pay.all %}
                                                     {% if pay.id == country.pay1 %}
                                                         <div class="pay1">
-                                                            <a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+                                                            <a href="/go/{{ casino.id }}/" target="_blank">
                                                                 <img src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
                                                             </a>
                                                         </div>
                                                     {% elif pay.id == country.pay2 %}
                                                         <div class="pay2">
-                                                            <a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+                                                            <a href="/go/{{ casino.id }}/" target="_blank">
                                                                 <img src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
                                                             </a>
                                                         </div>
                                                     {% endif %}
                                                 {% endfor %}
 
-									<a class="logo-link" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+									<a class="logo-link" href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 										<img class="logo-img" src="{{ casino.logo.lazy_logo.url }}" data-src="{{ casino.logo.site_logo.url }}" alt="{{ casino.name }}" />
 									</a>
 									<div class="stars col-12 col-lg-12">
@@ -148,10 +148,10 @@ header {
 											{% if country.tr_cashback %}{{ country.tr_cashback }}{% else %}CASHBACK{% endif %}
 										</div>
 										<div class="data">
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<img class="game-block__icon " src="/media/img/cashback.png" data-src="/media/img/cashback.png" alt="cashback" />
 											</a>
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<h3>
 													{% if casino.cashback %}{{ casino.cashback }}{% else %}10{% endif %}%
 												</h3>
@@ -165,10 +165,10 @@ header {
 											{% if country.tr_bonus %}{{ country.tr_bonus }}{% else %}BONUS{% endif %}
 										</div>
 										<div class="data">
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<img class="game-block__icon " src="/media/img/gift.png" data-src="/media/img/gift.png" alt="gift" />
 											</a>
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<h3>
 													{{ country.currency.symbol }} {{ casino.bonus_limit }}
 												</h3>
@@ -181,10 +181,10 @@ header {
 											{% if country.tr_cashback %}{{ country.tr_cashback }}{% else %}CASHBACK{% endif %}
 										</div>
 										<div class="data">
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<img class="game-block__icon " src="/media/img/cashback.png" data-src="/media/img/cashback.png" alt="cashback" />
 											</a>
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<h3>
 													{% if casino.cashback %}{{ casino.cashback }}{% else %}10{% endif %}%
 												</h3>
@@ -198,10 +198,10 @@ header {
 											{% if country.tr_fs %}{{ country.tr_fs }}{% else %}FREE SPIN{% endif %}
 										</div>
 										<div class="data">
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<img src="/media/img/repeat.png" data-src="/media/img/repeat.png" alt="gift" />
 											</a>
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<h3>
 													{{ casino.fs }} FS
 												</h3>
@@ -214,10 +214,10 @@ header {
 											{% if country.tr_cashback %}{{ country.tr_cashback }}{% else %}CASHBACK{% endif %}
 										</div>
 										<div class="data">
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<img class="game-block__icon " src="/media/img/cashback.png" data-src="/media/img/cashback.png" alt="cashback" />
 											</a>
-											<a href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												<h3>
 													{% if casino.cashback %}{{ casino.cashback }}{% else %}10{% endif %}%
 												</h3>
@@ -250,7 +250,7 @@ header {
                                             <ul class="anime">
                                                 {% for pay in casino.pay.all %}
                                                     <li>
-                                                        <a class="anime" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank">
+                                                        <a class="anime" href="/go/{{ casino.id }}/" target="_blank">
                                                             <img class="bank-img" src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
                                                         </a>
                                                     </li>
@@ -259,7 +259,7 @@ header {
 										</div>
 									</div>
 									<div class="buttons col-12">
-											<a class="play-button light-box light" href="/go/{{ casino.id }}/{% if gambler_id and casino.link %}?id={{ gambler_id }}{% endif %}" target="_blank" rel="noreferrer">
+											<a class="play-button light-box light" href="/go/{{ casino.id }}/" target="_blank" rel="noreferrer">
 												{% if country.tr_play %}{{ country.tr_play }}{% else %}CLAIM BONUS{% endif %}
 											</a>
 									</div>

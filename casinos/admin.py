@@ -19,6 +19,14 @@ class CasinoAdmin(admin.ModelAdmin):
     list_editable = ('is_active', 'position')
     save_on_top = True
     readonly_fields = ('real_position',)
+    fieldsets = (
+        ("Important options", {
+            'fields': ('is_active', 'name', 'logo', 'link', ('license', 'top_position', 'position'), ('min_dep', 'bonus', 'cashback', 'fs'))
+        }),
+        ('Advanced options', {
+            'fields': ('country', 'pay', ('partner', 'badge'), 'adv1', 'adv2', 'adv3')
+        }),
+    )
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('name', 'id')

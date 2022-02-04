@@ -201,65 +201,62 @@ def go(request, slug):
     except:
         return redirect(country_slug, permanent=True)
         
-    partner = casino.partner
-    postbacks = partner.postbacks.all()
-    
-    postback_params = ''
-    gambler_id = '000'
-        
-    if request.GET:
-        if 'id' in request.GET:
-            gambler_id = request.GET['id']
-    else:
-        gambler_id = False
-    
-    iter = 0
-    if gambler_id != False and gambler_id != '000':
-        for postback in postbacks:
-            if iter == 0:
-                postback_params = postback.name + '=' + gambler_id
-            else:
-                postback_params = postback_params + '&' + postback.name + '=' + gambler_id
-            iter += 1
-    
-    if casino.link:
-        link = casino.link
-    else:
-        link = country_slug
-    
-    if link.endswith('&'):
-        link = link
-    elif 'bit.ly' in link:
-        link = link
-    elif link.endswith('anid='):
-        link = link[:-5]
-    elif link.endswith('clickid={clickid}'):
-        link = link[:-17]    
-    elif link.endswith('anid#registration'):
-        link = link[:-17]
-    elif 'refpasrasw' in link:
-        link = link[:-1] + '&'
-    elif link.endswith('#popup-reg') or 'media' in link:
-        link = link + '&'
-    elif link.endswith('r=registration/'):
-        link = link[:-1] + '&'
-    elif '&' not in link and '?' not in link:
-        if link.endswith('/'):
-            link = link + '?'
-        else:
-            link = link + '/?'
-    elif '?' in link and link.endswith('&') == False:
-        link = link + '&'       
-    else:
-        link = link
-    
-    if gambler_id:
-        full_link = link + postback_params
-    else:
-        full_link = link
+    #partner = casino.partner
+    #postbacks = partner.postbacks.all()
+    #
+    #postback_params = ''
+    #gambler_id = '000'
+    #
+    #if request.GET:
+    #    if 'id' in request.GET:
+    #        gambler_id = request.GET['id']
+    #else:
+    #    gambler_id = False
+    #
+    #iter = 0
+    #if gambler_id != False and gambler_id != '000':
+    #    for postback in postbacks:
+    #        if iter == 0:
+    #            postback_params = postback.name + '=' + gambler_id
+    #        else:
+    #            postback_params = postback_params + '&' + postback.name + '=' + gambler_id
+    #        iter += 1
+    #
+    link = casino.link
+    #
+    #if link.endswith('&'):
+    #    link = link
+    #elif 'bit.ly' in link:
+    #    link = link
+    #elif link.endswith('anid='):
+    #    link = link[:-5]
+    #elif link.endswith('clickid={clickid}'):
+    #    link = link[:-17]
+    #elif link.endswith('anid#registration'):
+    #    link = link[:-17]
+    #elif 'refpasrasw' in link:
+    #    link = link[:-1] + '&'
+    #elif link.endswith('#popup-reg') or 'media' in link:
+    #    link = link + '&'
+    #elif link.endswith('r=registration/'):
+    #    link = link[:-1] + '&'
+    #elif '&' not in link and '?' not in link:
+    #    if link.endswith('/'):
+    #        link = link + '?'
+    #    else:
+    #        link = link + '/?'
+    #elif '?' in link and link.endswith('&') == False:
+    #    link = link + '&'
+    #else:
+    #    link = link
+    #
+    #if gambler_id:
+    #    full_link = link + postback_params
+    #else:
+    full_link = link
 
     if settings.DEBUG:
-        context = {'casino': casino, 'partner': partner, 'postbacks':postbacks, 'link': link, 'full_link': full_link}
+        context = {'casino': casino, 'link': link, 'full_link': full_link}
         temp = 'postback-test.html'
         return render(request, temp, context)
     return redirect(full_link, permanent=True) #render(request, temp, context)

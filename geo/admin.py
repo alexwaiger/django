@@ -11,6 +11,14 @@ class CountriesAdmin(admin.ModelAdmin):
         ('is_active'),
         ('countries', RelatedDropdownFilter),
     )
+    fieldsets = (
+        ("Important options", {
+            'fields': ('is_active', ('name', 'slug'), 'image', 'currency', 'theme', 'rotate', ('pay1', 'pay2'))
+        }),
+        ('Localisation options', {
+            'fields': ('header', 'promo1', 'promo2', 'text', 'tr_license', 'tr_md', 'tr_info', 'tr_bonus', 'tr_fs', 'tr_cashback', 'tr_pay', 'tr_score', 'tr_votes', 'tr_copy', 'tr_play')
+        }),
+    )
     ordering = ('-is_active', 'slug')
     
 class CurrencyAdmin(admin.ModelAdmin):

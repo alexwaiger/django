@@ -31,8 +31,8 @@ class Countries(models.Model):
     currency = models.ForeignKey(Currency, related_name='country_currency', blank=True, null=True, default=None,
                                  on_delete=models.CASCADE)
     slug = models.CharField(u'Обозначение (en)', max_length=2)
-    header = models.CharField(u'Заголовок', max_length=100, blank=True, null=True)
-    text = models.CharField(u'Текст в шапке (desktop) и title', max_length=300, blank=True, null=True)
+    header = models.CharField(u'Заголовок в шапке (desktop) и title', max_length=100, blank=True, null=True)
+    text = models.CharField(u'Текст (description)', max_length=300, blank=True, null=True)
     promo1 = models.CharField(u'Текст в шапке (верх)', max_length=300, blank=True, null=True)
     promo2 = models.CharField(u'Текст в шапке (низ)', max_length=300, blank=True, null=True)
     theme = models.ForeignKey(Theme, related_name='country_theme', blank=True, null=True, default=None,
