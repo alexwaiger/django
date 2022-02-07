@@ -119,10 +119,15 @@ def countries(request, slug):
     country_lang = slug
     country_slug = "/" + country_lang + "/"
         
+    #if request.GET:
+    #    for postback in postbacks:
+    #        if postback.name in request.GET:
+    #            gambler_id = request.GET[postback.name]
+    #else:
+    #    gambler_id = False
     if request.GET:
-        for postback in postbacks:
-            if postback.name in request.GET:
-                gambler_id = request.GET[postback.name]
+        if 'gclid' in request.GET:
+            gambler_id = request.GET['gclid']
     else:
         gambler_id = False
     
@@ -204,14 +209,14 @@ def go(request, slug):
     #partner = casino.partner
     #postbacks = partner.postbacks.all()
     #
-    #postback_params = ''
-    #gambler_id = '000'
-    #
-    #if request.GET:
-    #    if 'id' in request.GET:
-    #        gambler_id = request.GET['id']
-    #else:
-    #    gambler_id = False
+    postback_params = ''
+    gambler_id = '000'
+
+    if request.GET:
+        if 'gclid' in request.GET:
+            gambler_id = request.GET['gclid']
+    else:
+        gambler_id = False
     #
     #iter = 0
     #if gambler_id != False and gambler_id != '000':
@@ -250,10 +255,12 @@ def go(request, slug):
     #else:
     #    link = link
     #
-    #if gambler_id:
-    #    full_link = link + postback_params
-    #else:
-    full_link = link
+
+    if gambler_id != '000' and gambler_id != False:
+        postback_params = '?gclid=' + gambler_id
+        full_link = link + postback_params
+    else:
+        full_link = link
 
     if settings.DEBUG:
         context = {'casino': casino, 'link': link, 'full_link': full_link}
