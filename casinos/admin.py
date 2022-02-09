@@ -21,7 +21,7 @@ class CasinoAdmin(admin.ModelAdmin):
     readonly_fields = ('real_position',)
     fieldsets = (
         ("Important options", {
-            'fields': ('is_active', 'name', 'logo', 'link', ('license', 'top_position', 'position'), ('min_dep', 'bonus', 'cashback', 'fs'))
+            'fields': ('is_active', 'name', 'logo', 'link', ('license', 'top_position', 'position'), ('min_dep', 'limit', 'cashback', 'fs'))
         }),
         ('Advanced options', {
             'fields': ('country', 'pay', ('partner', 'badge'), 'adv1', 'adv2', 'adv3')
