@@ -59,8 +59,8 @@ a:hover {
 	position: absolute;
 	width: 18px;
 	height: 36px;
-	top: 24px;
-	left: 0px;
+	top: 22px;
+	left: 15px;
 	background-image: url(/media/img/left-arrow.png);
 	background-position: center;
 	background-size: contain;
@@ -72,8 +72,8 @@ a:hover {
 	position: absolute;
 	width: 18px;
 	height: 36px;
-	top: 24px;
-	right: 0px;
+	top: 22px;
+	right: 15px;
 	background-image: url(/media/img/right-arrow.png);
 	background-position: center;
 	background-size: contain;

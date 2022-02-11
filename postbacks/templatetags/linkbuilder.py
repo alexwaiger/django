@@ -2,6 +2,8 @@
 from django import template
 from django.template.defaultfilters import stringfilter
 
+from casinos.models import Casino
+
 import random
 
 register = template.Library()
@@ -66,3 +68,22 @@ def dynamic_votes(position):
     votes = (50 - position)
     res_votes = votes * random.randint(votes, votes*2)
     return res_votes
+
+@register.filter(name='pays_width', is_safe=True)
+def pays_width(id):
+    casino = Casino.objects.get(id=id)
+    pay_len = len(casino.pay.all())
+    width = (pay_len * 56) - 300
+    if width <= 0:
+        width = 0
+    return width
+
+@register.filter(name='pays_sec', is_safe=True)
+def pays_sec(id):
+    casino = Casino.objects.get(id=id)
+    pay_len = len(casino.pay.all())
+    if pay_len <= 3:
+        sec = 1
+    else:
+        sec = pay_len - 3
+    return sec

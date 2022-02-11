@@ -247,10 +247,10 @@ header {
 											{% if country.tr_pay %}{{ country.tr_pay }}{% else %}PAYMENT SYSTEMS{% endif %}
 										</div>
 										<div class="data">
-                                            <ul class="anime">
+                                            <ul class="anime{{ forloop.counter }}">
                                                 {% for pay in casino.pay.all %}
                                                     <li>
-                                                        <a class="anime" href="/go/{{ casino.id }}/{% if gambler_id %}?gclid={{ gambler_id }}{% endif %}" target="_blank">
+                                                        <a class="anime{{ forloop.counter }}" href="/go/{{ casino.id }}/{% if gambler_id %}?gclid={{ gambler_id }}{% endif %}" target="_blank">
                                                             <img class="bank-img" src="{{ pay.logo.lazy_logo_mini.url }}" data-src="{{ pay.logo.site_logo_mini.url }}" title="{{ pay.name }}" alt="{{ pay.name }}" />
                                                         </a>
                                                     </li>

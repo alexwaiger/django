@@ -244,7 +244,6 @@
 		}
 		.p-logos ul {
 			display: block;
-			width: 420px;
 			margin: 0 auto;
 		}
 		.p-logos ul li {
@@ -482,6 +481,41 @@
 
 	<!-- JavaScript -->
 <!-- 	<script src="/media/js/bootstrap.min.js"></script> -->
+    <style type="text/css">
+    {% for casino in casino_list %}
+        .data ul.anime{{ forloop.counter }} {
+            padding-left: 0 !important;
+            -webkit-animation: shake{{ forloop.counter }} {{ casino.id|pays_sec }}s linear alternate infinite;
+            animation: shake{{ forloop.counter }} {{ casino.id|pays_sec }}s linear alternate infinite;
+        }
+        ul.anime{{ forloop.counter }}:hover {
+            -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+        }
+        @-webkit-keyframes shake{{ forloop.counter }} {
+            0% {
+                -webkit-transform: translateX(0px);
+            }
+            100% {
+                -webkit-transform: translateX(-{{ casino.id|pays_width }}px);
+            }
+        }
+        @keyframes shake{{ forloop.counter }} {
+            0% {
+                -webkit-transform: translateX(0px);
+            }
+            100% {
+                transform: translateX(-{{ casino.id|pays_width }}px);
+            }
+        }
+        @media only screen and (min-width : 768px) {
+            .data ul.anime{{ forloop.counter }} {
+                -webkit-animation: none;
+                animation: none;
+            }
+        }
+    {% endfor %}
+    </style>
 
 	<script src="/media/libs/modernizr/modernizr.js"></script>
 	
