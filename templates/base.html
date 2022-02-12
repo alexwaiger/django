@@ -451,7 +451,7 @@
 						<ul>
 						{% for soft in providers %}
 							<li>
-								<a href="/go/{{ casino.id }}/?gclid={{ gambler_id }}">
+								<a href="/go/{{ casino.id }}/{{ gambler_id }}">
 									<img class="provider-logo" src="{{ soft.logo.lazy_logo_mini.url }}" data-src="{{ soft.logo.site_logo_mini.url }}" alt="{{ soft.name }}" />
 								</a>
 							</li>

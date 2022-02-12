@@ -43,15 +43,37 @@ def get_client_ip(request):
 
 @never_cache
 def home(request):
-    postbacks = Postback.objects.all()
-    gambler_id = '000'
-        
+    gambler_id = {}
     if request.GET:
-        for postback in postbacks:
-            if postback.name in request.GET:
-                gambler_id = request.GET[postback.name]
+        if 'gclid' in request.GET:
+            gambler_id['gclid'] = request.GET['gclid']
+        if 'utm_term' in request.GET:
+            gambler_id['utm_term'] = request.GET['utm_term']
+        if 'utm_creative' in request.GET:
+            gambler_id['utm_creative'] = request.GET['utm_creative']
+        if 'utm_compaign' in request.GET:
+            gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        if 'utm_position' in request.GET:
+            gambler_id['utm_position'] = request.GET['utm_position']
+        if 'utm_network' in request.GET:
+            gambler_id['utm_network'] = request.GET['utm_network']
+        if 'utm_target' in request.GET:
+            gambler_id['utm_target'] = request.GET['utm_target']
+        if 'utm_placement' in request.GET:
+            gambler_id['utm_placement'] = request.GET['utm_placement']
+        if 'utm_match' in request.GET:
+            gambler_id['utm_match'] = request.GET['utm_match']
     else:
-        gambler_id = False
+        gambler_id=False
+
+    params = ''
+    if gambler_id:
+        for id in gambler_id:
+            if params == '':
+                params = '?'
+            else:
+                params += '&'
+            params += id + '=' + gambler_id[id]
         
     headers = {
         "Content-type": "application/json",
@@ -62,7 +84,9 @@ def home(request):
     country_slug = "/" + country_lang + "/"
     
     targetCountry = country_lang
-    domain = request.build_absolute_uri()
+    http_scheme = request.scheme
+    http_host = request.get_host()
+    domain = str(http_scheme) + '://' + str(http_host) + '/'
 
     clientIP = get_client_ip(request)
     
@@ -107,29 +131,46 @@ def home(request):
         else:
             return redirect('/', permanent=False)
 
-    full_url = str(domain) + targetCountry + '/'
+    full_url = str(domain) + targetCountry + '/' + params
     return redirect(full_url, permanent=True)
     
 @never_cache
 def countries(request, slug):
-    postbacks = Postback.objects.all()
-    gambler_id = '000'
+    gambler_id = {}
+    if request.GET:
+        if 'gclid' in request.GET:
+            gambler_id['gclid'] = request.GET['gclid']
+        if 'utm_term' in request.GET:
+            gambler_id['utm_term'] = request.GET['utm_term']
+        if 'utm_creative' in request.GET:
+            gambler_id['utm_creative'] = request.GET['utm_creative']
+        if 'utm_compaign' in request.GET:
+            gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        if 'utm_position' in request.GET:
+            gambler_id['utm_position'] = request.GET['utm_position']
+        if 'utm_network' in request.GET:
+            gambler_id['utm_network'] = request.GET['utm_network']
+        if 'utm_target' in request.GET:
+            gambler_id['utm_target'] = request.GET['utm_target']
+        if 'utm_placement' in request.GET:
+            gambler_id['utm_placement'] = request.GET['utm_placement']
+        if 'utm_match' in request.GET:
+            gambler_id['utm_match'] = request.GET['utm_match']
+    else:
+        gambler_id=False
     
     slug = slug
     country_lang = slug
     country_slug = "/" + country_lang + "/"
-        
-    #if request.GET:
-    #    for postback in postbacks:
-    #        if postback.name in request.GET:
-    #            gambler_id = request.GET[postback.name]
-    #else:
-    #    gambler_id = False
-    if request.GET:
-        if 'gclid' in request.GET:
-            gambler_id = request.GET['gclid']
-    else:
-        gambler_id = False
+
+    params = ''
+    if gambler_id:
+        for id in gambler_id:
+            if params == '':
+                params = '?'
+            else:
+                params += '&'
+            params += id + '=' + gambler_id[id]
     
     countries = Countries.objects.filter(is_active=True)
     
@@ -193,11 +234,43 @@ def countries(request, slug):
         casino = Casino.objects.get(name="Boka")
 
     temp = 'country.html'
-    context = {'casino_list': casino_list, 'providers': provider_list, 'gambler_id':gambler_id, 'countries':countries, 'country':country, 'casino':casino,}
+    context = {'casino_list': casino_list, 'providers': provider_list, 'gambler_id':params, 'countries':countries, 'country':country, 'casino':casino,}
     return render(request, temp, context)
     
 @never_cache
 def go(request, slug):
+    gambler_id = {}
+    if request.GET:
+        if 'gclid' in request.GET:
+            gambler_id['gclid'] = request.GET['gclid']
+        if 'utm_term' in request.GET:
+            gambler_id['utm_term'] = request.GET['utm_term']
+        if 'utm_creative' in request.GET:
+            gambler_id['utm_creative'] = request.GET['utm_creative']
+        if 'utm_compaign' in request.GET:
+            gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        if 'utm_position' in request.GET:
+            gambler_id['utm_position'] = request.GET['utm_position']
+        if 'utm_network' in request.GET:
+            gambler_id['utm_network'] = request.GET['utm_network']
+        if 'utm_target' in request.GET:
+            gambler_id['utm_target'] = request.GET['utm_target']
+        if 'utm_placement' in request.GET:
+            gambler_id['utm_placement'] = request.GET['utm_placement']
+        if 'utm_match' in request.GET:
+            gambler_id['utm_match'] = request.GET['utm_match']
+    else:
+        gambler_id=False
+
+    params = ''
+    if gambler_id:
+        for id in gambler_id:
+            if params == '':
+                params = '?'
+            else:
+                params += '&'
+            params += id + '=' + gambler_id[id]
+
     country_lang = settings.SITE_LANGUAGE
     country_slug = "/" + country_lang + "/"
     
@@ -208,25 +281,7 @@ def go(request, slug):
         
     #partner = casino.partner
     #postbacks = partner.postbacks.all()
-    #
-    postback_params = ''
-    gambler_id = '000'
 
-    if request.GET:
-        if 'gclid' in request.GET:
-            gambler_id = request.GET['gclid']
-    else:
-        gambler_id = False
-    #
-    #iter = 0
-    #if gambler_id != False and gambler_id != '000':
-    #    for postback in postbacks:
-    #        if iter == 0:
-    #            postback_params = postback.name + '=' + gambler_id
-    #        else:
-    #            postback_params = postback_params + '&' + postback.name + '=' + gambler_id
-    #        iter += 1
-    #
     link = casino.link
     #
     #if link.endswith('&'):
@@ -256,9 +311,8 @@ def go(request, slug):
     #    link = link
     #
 
-    if gambler_id != '000' and gambler_id != False:
-        postback_params = '?gclid=' + gambler_id
-        full_link = link + postback_params
+    if gambler_id != '' and gambler_id != False:
+        full_link = link + params
     else:
         full_link = link
 
