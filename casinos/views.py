@@ -53,6 +53,8 @@ def home(request):
             gambler_id['utm_creative'] = request.GET['utm_creative']
         if 'utm_compaign' in request.GET:
             gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        if 'utm_campaign' in request.GET:
+            gambler_id['utm_campaign'] = request.GET['utm_campaign']
         if 'utm_position' in request.GET:
             gambler_id['utm_position'] = request.GET['utm_position']
         if 'utm_network' in request.GET:
@@ -146,6 +148,8 @@ def countries(request, slug):
             gambler_id['utm_creative'] = request.GET['utm_creative']
         if 'utm_compaign' in request.GET:
             gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        if 'utm_campaign' in request.GET:
+            gambler_id['utm_campaign'] = request.GET['utm_campaign']
         if 'utm_position' in request.GET:
             gambler_id['utm_position'] = request.GET['utm_position']
         if 'utm_network' in request.GET:
@@ -249,6 +253,8 @@ def go(request, slug):
             gambler_id['utm_creative'] = request.GET['utm_creative']
         if 'utm_compaign' in request.GET:
             gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        if 'utm_campaign' in request.GET:
+            gambler_id['utm_campaign'] = request.GET['utm_campaign']
         if 'utm_position' in request.GET:
             gambler_id['utm_position'] = request.GET['utm_position']
         if 'utm_network' in request.GET:
