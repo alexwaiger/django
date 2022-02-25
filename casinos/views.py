@@ -44,27 +44,32 @@ def get_client_ip(request):
 @never_cache
 def home(request):
     gambler_id = {}
+    postbacks = Postback.objects.filter(is_active=True)
     if request.GET:
-        if 'gclid' in request.GET:
-            gambler_id['gclid'] = request.GET['gclid']
-        if 'utm_term' in request.GET:
-            gambler_id['utm_term'] = request.GET['utm_term']
-        if 'utm_creative' in request.GET:
-            gambler_id['utm_creative'] = request.GET['utm_creative']
-        if 'utm_compaign' in request.GET:
-            gambler_id['utm_compaign'] = request.GET['utm_compaign']
-        if 'utm_campaign' in request.GET:
-            gambler_id['utm_campaign'] = request.GET['utm_campaign']
-        if 'utm_position' in request.GET:
-            gambler_id['utm_position'] = request.GET['utm_position']
-        if 'utm_network' in request.GET:
-            gambler_id['utm_network'] = request.GET['utm_network']
-        if 'utm_target' in request.GET:
-            gambler_id['utm_target'] = request.GET['utm_target']
-        if 'utm_placement' in request.GET:
-            gambler_id['utm_placement'] = request.GET['utm_placement']
-        if 'utm_match' in request.GET:
-            gambler_id['utm_match'] = request.GET['utm_match']
+        #if 'gclid' in request.GET:
+        #    gambler_id['gclid'] = request.GET['gclid']
+        #if 'utm_term' in request.GET:
+        #    gambler_id['utm_term'] = request.GET['utm_term']
+        #if 'utm_creative' in request.GET:
+        #    gambler_id['utm_creative'] = request.GET['utm_creative']
+        #if 'utm_compaign' in request.GET:
+        #    gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        #if 'utm_campaign' in request.GET:
+        #    gambler_id['utm_campaign'] = request.GET['utm_campaign']
+        #if 'utm_position' in request.GET:
+        #    gambler_id['utm_position'] = request.GET['utm_position']
+        #if 'utm_network' in request.GET:
+        #    gambler_id['utm_network'] = request.GET['utm_network']
+        #if 'utm_target' in request.GET:
+        #    gambler_id['utm_target'] = request.GET['utm_target']
+        #if 'utm_placement' in request.GET:
+        #    gambler_id['utm_placement'] = request.GET['utm_placement']
+        #if 'utm_match' in request.GET:
+        #    gambler_id['utm_match'] = request.GET['utm_match']
+        if postbacks:
+            for postback in postbacks:
+                if postback.name in request.GET:
+                    gambler_id[postback.name] = request.GET[postback.name]
     else:
         gambler_id=False
 
@@ -138,28 +143,33 @@ def home(request):
     
 @never_cache
 def countries(request, slug):
+    postbacks = Postback.objects.filter(is_active=True)
     gambler_id = {}
     if request.GET:
-        if 'gclid' in request.GET:
-            gambler_id['gclid'] = request.GET['gclid']
-        if 'utm_term' in request.GET:
-            gambler_id['utm_term'] = request.GET['utm_term']
-        if 'utm_creative' in request.GET:
-            gambler_id['utm_creative'] = request.GET['utm_creative']
-        if 'utm_compaign' in request.GET:
-            gambler_id['utm_compaign'] = request.GET['utm_compaign']
-        if 'utm_campaign' in request.GET:
-            gambler_id['utm_campaign'] = request.GET['utm_campaign']
-        if 'utm_position' in request.GET:
-            gambler_id['utm_position'] = request.GET['utm_position']
-        if 'utm_network' in request.GET:
-            gambler_id['utm_network'] = request.GET['utm_network']
-        if 'utm_target' in request.GET:
-            gambler_id['utm_target'] = request.GET['utm_target']
-        if 'utm_placement' in request.GET:
-            gambler_id['utm_placement'] = request.GET['utm_placement']
-        if 'utm_match' in request.GET:
-            gambler_id['utm_match'] = request.GET['utm_match']
+        #if 'gclid' in request.GET:
+        #    gambler_id['gclid'] = request.GET['gclid']
+        #if 'utm_term' in request.GET:
+        #    gambler_id['utm_term'] = request.GET['utm_term']
+        #if 'utm_creative' in request.GET:
+        #    gambler_id['utm_creative'] = request.GET['utm_creative']
+        #if 'utm_compaign' in request.GET:
+        #    gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        #if 'utm_campaign' in request.GET:
+        #    gambler_id['utm_campaign'] = request.GET['utm_campaign']
+        #if 'utm_position' in request.GET:
+        #    gambler_id['utm_position'] = request.GET['utm_position']
+        #if 'utm_network' in request.GET:
+        #    gambler_id['utm_network'] = request.GET['utm_network']
+        #if 'utm_target' in request.GET:
+        #    gambler_id['utm_target'] = request.GET['utm_target']
+        #if 'utm_placement' in request.GET:
+        #    gambler_id['utm_placement'] = request.GET['utm_placement']
+        #if 'utm_match' in request.GET:
+        #    gambler_id['utm_match'] = request.GET['utm_match']
+        if postbacks:
+            for postback in postbacks:
+                if postback.name in request.GET:
+                    gambler_id[postback.name] = request.GET[postback.name]
     else:
         gambler_id=False
     
@@ -231,6 +241,14 @@ def countries(request, slug):
 
     casino_list = list(chain(frozen_casino_list, top_casino_list, middle_casino_list))
 
+    country.page_views += 1
+    message = ''
+    try:
+        country.save()
+        message += 'Save Country Complete'
+    except:
+        message += 'Save Country Error'
+
     provider_list = Software.objects.all()[:24]
     if casino_list:
         casino = casino_list[0]
@@ -243,28 +261,33 @@ def countries(request, slug):
     
 @never_cache
 def go(request, slug):
+    postbacks = Postback.objects.filter(is_active=True)
     gambler_id = {}
     if request.GET:
-        if 'gclid' in request.GET:
-            gambler_id['gclid'] = request.GET['gclid']
-        if 'utm_term' in request.GET:
-            gambler_id['utm_term'] = request.GET['utm_term']
-        if 'utm_creative' in request.GET:
-            gambler_id['utm_creative'] = request.GET['utm_creative']
-        if 'utm_compaign' in request.GET:
-            gambler_id['utm_compaign'] = request.GET['utm_compaign']
-        if 'utm_campaign' in request.GET:
-            gambler_id['utm_campaign'] = request.GET['utm_campaign']
-        if 'utm_position' in request.GET:
-            gambler_id['utm_position'] = request.GET['utm_position']
-        if 'utm_network' in request.GET:
-            gambler_id['utm_network'] = request.GET['utm_network']
-        if 'utm_target' in request.GET:
-            gambler_id['utm_target'] = request.GET['utm_target']
-        if 'utm_placement' in request.GET:
-            gambler_id['utm_placement'] = request.GET['utm_placement']
-        if 'utm_match' in request.GET:
-            gambler_id['utm_match'] = request.GET['utm_match']
+        #if 'gclid' in request.GET:
+        #    gambler_id['gclid'] = request.GET['gclid']
+        #if 'utm_term' in request.GET:
+        #    gambler_id['utm_term'] = request.GET['utm_term']
+        #if 'utm_creative' in request.GET:
+        #    gambler_id['utm_creative'] = request.GET['utm_creative']
+        #if 'utm_compaign' in request.GET:
+        #    gambler_id['utm_compaign'] = request.GET['utm_compaign']
+        #if 'utm_campaign' in request.GET:
+        #    gambler_id['utm_campaign'] = request.GET['utm_campaign']
+        #if 'utm_position' in request.GET:
+        #    gambler_id['utm_position'] = request.GET['utm_position']
+        #if 'utm_network' in request.GET:
+        #    gambler_id['utm_network'] = request.GET['utm_network']
+        #if 'utm_target' in request.GET:
+        #    gambler_id['utm_target'] = request.GET['utm_target']
+        #if 'utm_placement' in request.GET:
+        #    gambler_id['utm_placement'] = request.GET['utm_placement']
+        #if 'utm_match' in request.GET:
+        #    gambler_id['utm_match'] = request.GET['utm_match']
+        if postbacks:
+            for postback in postbacks:
+                if postback.name in request.GET:
+                    gambler_id[postback.name] = request.GET[postback.name]
     else:
         gambler_id=False
 
@@ -272,7 +295,7 @@ def go(request, slug):
     if gambler_id:
         for id in gambler_id:
             if params == '':
-                params = '?'
+                params = ''
             else:
                 params += '&'
             params += id + '=' + gambler_id[id]
@@ -289,55 +312,92 @@ def go(request, slug):
     #postbacks = partner.postbacks.all()
 
     link = casino.link
-    #
-    #if link.endswith('&'):
-    #    link = link
-    #elif 'bit.ly' in link:
-    #    link = link
-    #elif link.endswith('anid='):
-    #    link = link[:-5]
-    #elif link.endswith('clickid={clickid}'):
-    #    link = link[:-17]
-    #elif link.endswith('anid#registration'):
-    #    link = link[:-17]
-    #elif 'refpasrasw' in link:
-    #    link = link[:-1] + '&'
-    #elif link.endswith('#popup-reg') or 'media' in link:
-    #    link = link + '&'
-    #elif link.endswith('r=registration/'):
-    #    link = link[:-1] + '&'
-    #elif '&' not in link and '?' not in link:
-    #    if link.endswith('/'):
-    #        link = link + '?'
-    #    else:
-    #        link = link + '/?'
-    #elif '?' in link and link.endswith('&') == False:
-    #    link = link + '&'
-    #else:
-    #    link = link
-    #
+
+    if link.endswith('&'):
+        link = link
+    elif 'bit.ly' in link:
+        link = link
+    elif link.endswith('anid='):
+        link = link[:-5]
+    elif link.endswith('clickid={clickid}'):
+        link = link[:-17]
+    elif link.endswith('anid#registration'):
+        link = link[:-17]
+    elif 'refpasrasw' in link:
+        link = link[:-1] + '&'
+    elif link.endswith('#popup-reg') or 'media' in link:
+        link = link + '&'
+    elif link.endswith('r=registration/'):
+        link = link[:-1] + '&'
+    elif '&' not in link and '?' not in link:
+        if link.endswith('/'):
+            link = link + '?'
+        else:
+            link = link + '/?'
+    elif '?' in link and link.endswith('&') == False:
+        link = link + '&'
+    else:
+        link = link
+
 
     if gambler_id != '' and gambler_id != False:
         full_link = link + params
     else:
         full_link = link
 
+    country = Countries.objects.get(slug=country_lang)
+
+    casino.click += 1
+    country.click += 1
+    message = ''
+    try:
+        casino.save()
+        message += 'Save Casino Complete'
+    except:
+        message += 'Save Casino Error'
+
+    message += ' & '
+
+    try:
+        country.save()
+        message += 'Save Casino Complete'
+    except:
+        message += 'Save Casino Error'
+
     if settings.DEBUG:
-        context = {'casino': casino, 'link': link, 'full_link': full_link}
+        context = {'casino': casino, 'link': link, 'full_link': full_link, 'message': message}
         temp = 'postback-test.html'
         return render(request, temp, context)
     return redirect(full_link, permanent=True) #render(request, temp, context)
 
 def clean(request):
     if request.user.is_authenticated:
-        casinos = Casino.objects.all()
+        casinos = Casino.objects.filter(is_active=True)
+        countries = Countries.objects.filter(is_active=True)
+        message = ''
         for casino in casinos:
             casino.real_position = 0
+            casino.click = 0
             try:
                 casino.save()
+                message += 'Save Casino'
+                context = {'message': message, 'text': 'Go to Admin', 'link': '/admin/'}
             except:
-                context = {'message': 'Error', 'text': 'Try Again', 'link': '/admin/clean-positions/'}
-        context = {'message': 'Well Done', 'text': 'Go to Admin', 'link': '/admin/'}
+                message += 'Error Casino'
+                context = {'message': message, 'text': 'Try Again', 'link': '/admin/clean-positions/'}
+
+        message += ' & '
+
+        for country in countries:
+            country.page_views = 0
+            country.click = 0
+            try:
+                country.save()
+                message += 'Save Country'
+                context = {'message': message, 'text': 'Go to Admin', 'link': '/admin/'}
+            except:
+                message += 'Error Country'
+                context = {'message': message, 'text': 'Try Again', 'link': '/admin/clean-positions/'}
     else:
         context = {'message': 'Blocked', 'text': 'Please Log In', 'link': '/admin/'}
     return render(request, 'clean.html', context)

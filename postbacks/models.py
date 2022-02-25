@@ -1,6 +1,7 @@
 from django.db import models
 
 class Postback(models.Model):
+    is_active = models.BooleanField(u'Is Active', default=True, blank=False, null=False)
     name = models.CharField(u'name', max_length=50, blank=False, unique=True)
     
     def __str__(self):

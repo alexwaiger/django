@@ -5,7 +5,7 @@ from django_admin_listfilter_dropdown.filters import DropdownFilter, RelatedDrop
 from .models import Currency, Countries
 
 class CountriesAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_active', 'slug', 'header')
+    list_display = ('name', 'is_active', 'slug', 'header', 'page_views', 'click')
     list_editable = ('is_active', 'header')
     list_filter = (      
         ('is_active'),
@@ -20,6 +20,7 @@ class CountriesAdmin(admin.ModelAdmin):
         }),
     )
     ordering = ('-is_active', 'slug')
+    readonly_fields = ('click', 'page_views')
     
 class CurrencyAdmin(admin.ModelAdmin):
     list_display = ('name',)

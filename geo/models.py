@@ -55,6 +55,9 @@ class Countries(models.Model):
     tr_votes = models.CharField(u'Текст ГОЛОСА', max_length=12, blank=True, null=True)
     tr_copy = models.CharField(u'Текст Все права защищены', max_length=64, blank=True, null=True)
 
+    page_views = models.IntegerField(u'Views', default=0, blank=True, null=True)
+    click = models.IntegerField(u'Clicks', default=0, blank=True, null=True)
+
     def __str__(self):
         return self.name
 

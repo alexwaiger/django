@@ -86,6 +86,7 @@ class Casino(models.Model):
     fs = models.IntegerField(u'Free Spins', null=False, blank=False, default=0)
 
     real_position = models.IntegerField(u'Real Position', default=None, blank=True, null=True)
+    click = models.IntegerField(u'Clicks', default=0, blank=True, null=True)
 
     def __str__(self):
         return self.name
