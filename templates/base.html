@@ -451,7 +451,7 @@
 						<ul>
 						{% for soft in providers %}
 							<li>
-								<a href="/go/{{ casino.id }}/{{ gambler_id }}">
+								<a href="{% if country.hide_link %}/go/{{ casino.id }}/{{ gambler_id }}{% else %}{{ casino.link }}{% endif %}">
 									<img class="provider-logo" src="{{ soft.logo.lazy_logo_mini.url }}" data-src="{{ soft.logo.site_logo_mini.url }}" alt="{{ soft.name }}" />
 								</a>
 							</li>
