@@ -42,6 +42,7 @@ class Countries(models.Model):
     pay2 = models.IntegerField(u'Выделить платежку (Правый нижний угол) Ввести ID', null=True, blank=True, default=0)
 
     rotate = models.BooleanField(u'Перемешивание топа', default=False, blank=True, null=False)
+    hide_link = models.BooleanField(u'Прикрытие ссылок', default=False, blank=True, null=False)
 
     tr_play = models.CharField(u'Текст на КНОПКЕ', max_length=24, blank=True, null=True)
     tr_bonus = models.CharField(u'Текст БОНУС', max_length=24, blank=True, null=True)
